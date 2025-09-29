@@ -60,7 +60,9 @@
                                              
                                             <li><a href="contact.html">Contact</a></li>
                                             <li><a href="studentprofile.html">My Profile</a></li>
-                                            <li><a href="myapplications.html">My Applications</a></li>
+                                             <li><a href="myapplications.html" id="nav-myapplications">My Applications</a></li>
+    <li><a href="employeradminpage.html" id="nav-employeradmin">Employer Admin</a></li>
+                                            
                                         </ul>
                                     </nav>
                                 </div>               
@@ -258,6 +260,7 @@
                                         </div>
                                     </div>
                                 </aside>
+                                <button id="applyFilterBtn">Apply Filter</button>
                               <!-- Range Slider End -->
                             </div>
                         </div>
@@ -570,6 +573,16 @@
 		<!-- Jquery Plugins, main Jquery -->	
         <script src="./assets/js/plugins.js"></script>
         <script src="./assets/js/main.js"></script>
-        
+        <script>document.addEventListener('DOMContentLoaded', function() {
+    const userType = localStorage.getItem('userType');
+    if (userType === 'employer') {
+        const myAppLink = document.getElementById('nav-myapplications');
+        if (myAppLink) myAppLink.style.display = 'none';
+    }
+    if (userType === 'student') {
+        const empAdminLink = document.getElementById('nav-employeradmin');
+        if (empAdminLink) empAdminLink.style.display = 'none';
+    }
+});</script>
     </body>
 </html>
