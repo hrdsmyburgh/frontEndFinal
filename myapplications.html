@@ -124,7 +124,7 @@
 				<li>
 					<i class='bx bxs-group' ></i>
 					<span class="text">
-						<h3>5</h3>
+						<h3 id="applicationCount">5</h3>
 						<p>Applications</p>
 					</span>
 				</li>
@@ -306,5 +306,33 @@ document.addEventListener('DOMContentLoaded', function() {
         if (empAdminLink) empAdminLink.style.display = 'none';
     }
 });</script>
+       <script>
+document.addEventListener('DOMContentLoaded', function() {
+    function updateApplicationCount() {
+        // Count only visible rows (for filtering, etc.)
+        const rows = document.querySelectorAll('table tbody tr');
+        let count = 0;
+        rows.forEach(function(row) {
+            if (row.style.display !== 'none') count++;
+        });
+        document.getElementById('applicationCount').textContent = count;
+    }
+    // Update count on page load
+    updateApplicationCount();
+
+    // If you have filtering or row removal, call updateApplicationCount after those actions
+    // Example for your filter button:
+    document.getElementById('applyFilterBtn').addEventListener('click', function() {
+        // ... your filter code ...
+        updateApplicationCount();
+    });
+
+    // Example for withdrawing applications:
+    document.querySelector('.apply-action-btn').addEventListener('click', function() {
+        // ... your withdraw code ...
+        updateApplicationCount();
+    });
+});
+</script>
        </body>
 </html>
