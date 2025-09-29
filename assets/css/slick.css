@@ -1496,3 +1496,17 @@ input[type="checkbox"] {
 .filter-form button:hover {
     background-color: #0056b3;
 }
+.status.rejected {
+    background: #e74c3c;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+}
+.status.accepted {
+    background: #27ae60;   /* Green for accepted */
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-weight: 500;
+    display: inline-block;
+}
