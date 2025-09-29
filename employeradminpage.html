@@ -144,25 +144,45 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="fs-checkbox-wrapper">
-                                            <input aria-describedby="select-applicant"
-                                                   class="fs-checkbox"
-                                                   id="select-applicant"
-                                                   name="select-applicant"
-                                                   type="checkbox"
-                                                   value="select-applicant" />
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <p>John Doe</p>
-                                    </td>
-                                    <td>Internship</td>
-                                    <td><span class="status completed">In progress</span></td>
-                                    <td><a href="assets/img/cvexample.pdf" style="color: red;" target="_blank">cvname.pdf</a></td>
-                                </tr>
-                            </tbody>
+    <tr 
+        data-job="Internship" 
+        data-status="In progress">
+        <td>
+            <div class="fs-checkbox-wrapper">
+                <input aria-describedby="select-applicant"
+                    class="fs-checkbox"
+                    name="select-applicant"
+                    type="checkbox"
+                    value="select-applicant" />
+            </div>
+        </td>
+        <td>
+            <p>John Doe</p>
+        </td>
+        <td>Internship</td>
+        <td><span class="status completed">In progress</span></td>
+        <td><a href="assets/img/cvexample.pdf" style="color: red;" target="_blank">cvname.pdf</a></td>
+    </tr>
+    <tr 
+        data-job="Internship" 
+        data-status="Approved">
+        <td>
+            <div class="fs-checkbox-wrapper">
+                <input aria-describedby="select-applicant"
+                    class="fs-checkbox"
+                    name="select-applicant"
+                    type="checkbox"
+                    value="select-applicant" />
+            </div>
+        </td>
+        <td>
+            <p>John Doe</p>
+        </td>
+        <td>Internship</td>
+        <td><span class="status completed">Approved</span></td>
+        <td><a href="assets/img/cvexample.pdf" style="color: red;" target="_blank">cvname.pdf</a></td>
+    </tr>
+</tbody>
                         </table>
                     </div>
                 </div>
@@ -205,5 +225,54 @@
     <!-- Jquery Plugins, main Jquery -->
     <script src="./assets/js/plugins.js"></script>
     <script src="./assets/js/main.js"></script>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('applyFilterBtn').addEventListener('click', function() {
+        const jobFilter = document.getElementById('filterJob').value.trim().toLowerCase();
+        const statusFilter = document.getElementById('filterStatus').value.trim().toLowerCase();
+
+        document.querySelectorAll('table tbody tr').forEach(function(row) {
+            // 0 = checkbox, 1 = name, 2 = job, 3 = status, 4 = cv
+            const jobText = row.cells[2].textContent.trim().toLowerCase();
+            const statusText = row.cells[3].textContent.trim().toLowerCase();
+
+            const matchesJob = !jobFilter || jobText.includes(jobFilter);
+            const matchesStatus = !statusFilter || statusText.includes(statusFilter);
+
+            row.style.display = (matchesJob && matchesStatus) ? '' : 'none';
+        });
+    });
+});
+</script>
+    <script>document.addEventListener('DOMContentLoaded', function() {
+    // Apply Accept/Reject status
+    document.querySelector('.apply-action-btn').addEventListener('click', function() {
+        const action = document.getElementById('actionDropdown').value;
+        if (!action) return;
+
+        document.querySelectorAll('table tbody tr').forEach(function(row) {
+            const checkbox = row.cells[0].querySelector('input[type="checkbox"]');
+            if (checkbox && checkbox.checked) {
+                const statusCell = row.cells[3];
+                if (action === 'reject') {
+                    statusCell.innerHTML = '<span class="status rejected">Rejected</span>';
+                } else if (action === 'accept') {
+                    statusCell.innerHTML = '<span class="status accepted">Accepted</span>';
+                }
+            }
+        });
+    });
+
+    // Select All functionality (optional, but helpful)
+    const selectAll = document.getElementById('selectAll');
+    if (selectAll) {
+        selectAll.addEventListener('change', function(e) {
+            const checked = e.target.checked;
+            document.querySelectorAll('table tbody tr input[type="checkbox"]').forEach(function(chk) {
+                chk.checked = checked;
+            });
+        });
+    }
+});</script>
 </body>
 </html>
