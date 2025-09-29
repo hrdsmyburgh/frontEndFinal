@@ -178,6 +178,23 @@
                                 <td id="cv"><a href="assets/img/cvexample.pdf" style="color: orange;" target="_blank">cvname.pdf</a></td>
                                 <td id="withdraw" style="color: red;">Withdraw Application</td>
 							</tr>
+                            <tr>
+                                <td>
+                                        <div class="fs-checkbox-wrapper">
+                                            <input aria-describedby="select-job"
+                                                   class="fs-checkbox"
+                                                   id="select-job"
+                                                   name="select-job"
+                                                   type="checkbox"
+                                                   value="select-job" />
+                                        </div>
+                                    </td>
+                                <td>Internship</td>
+								<td id="jobtype">Amazing Tech</td>
+								<td id="status"><span class="status completed">In progress</span></td>
+                                <td id="cv"><a href="assets/img/cvexample.pdf" style="color: orange;" target="_blank">cvname.pdf</a></td>
+                                <td id="withdraw" style="color: red;">Withdraw Application</td>
+							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -223,5 +240,58 @@
 		<!-- Jquery Plugins, main Jquery -->	
         <script src="./assets/js/plugins.js"></script>
         <script src="./assets/js/main.js"></script>
+       <script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('applyFilterBtn').addEventListener('click', function() {
+        const jobFilter = document.getElementById('filterJob').value.trim().toLowerCase();
+        const statusFilter = document.getElementById('filterStatus').value.trim().toLowerCase();
+
+        document.querySelectorAll('table tbody tr').forEach(function(row) {
+            // 0 = checkbox, 1 = name, 2 = job, 3 = status, 4 = cv
+            const jobText = row.cells[2].textContent.trim().toLowerCase();
+            const statusText = row.cells[3].textContent.trim().toLowerCase();
+
+            const matchesJob = !jobFilter || jobText.includes(jobFilter);
+            const matchesStatus = !statusFilter || statusText.includes(statusFilter);
+
+            row.style.display = (matchesJob && matchesStatus) ? '' : 'none';
+        });
+    });
+});
+</script>
+       <script>document.addEventListener('DOMContentLoaded', function() {
+    // Filter function (already works)
+    document.getElementById('applyFilterBtn').addEventListener('click', function() {
+        const jobFilter = document.getElementById('filterJob').value.trim().toLowerCase();
+        const statusFilter = document.getElementById('filterStatus').value.trim().toLowerCase();
+
+        document.querySelectorAll('table tbody tr').forEach(function(row) {
+            const jobText = row.cells[1].textContent.trim().toLowerCase(); // job applied
+            const statusText = row.cells[3].textContent.trim().toLowerCase(); // status
+
+            const matchesJob = !jobFilter || jobText.includes(jobFilter);
+            const matchesStatus = !statusFilter || statusText.includes(statusFilter);
+
+            row.style.display = (matchesJob && matchesStatus) ? '' : 'none';
+        });
+    });
+
+    // Withdraw application functionality
+    document.querySelector('.apply-action-btn').addEventListener('click', function() {
+        const action = document.getElementById('actionDropdown').value;
+        if (action === 'accept') { // "Withdraw application" is assigned the value "accept" in your HTML
+            // Collect checked rows and remove them
+            // Iterate backwards to avoid issues when removing elements in a NodeList
+            const rows = document.querySelectorAll('table tbody tr');
+            for (let i = rows.length - 1; i >= 0; i--) {
+                const row = rows[i];
+                const checkbox = row.cells[0].querySelector('input[type="checkbox"]');
+                if (checkbox && checkbox.checked) {
+                    row.parentNode.removeChild(row);
+                }
+            }
+        }
+    });
+});</script>
        </body>
 </html>
