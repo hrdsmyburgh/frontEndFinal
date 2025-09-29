@@ -420,3 +420,4 @@ document.getElementById('applyFilterBtn').addEventListener('click', function () 
         }
     });
 });
+
