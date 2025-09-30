@@ -243,67 +243,48 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const userType = localStorage.getItem('userType');
-    if (userType === 'employer') {
-        const myAppLink = document.getElementById('nav-myapplications');
-        if (myAppLink) myAppLink.style.display = 'none';
-    }
-    if (userType === 'student') {
-        const empAdminLink = document.getElementById('nav-employeradmin');
-        if (empAdminLink) empAdminLink.style.display = 'none';
-    }
+    const regForm = document.getElementById("registrationForm"); // Make sure your form has this id
 
-    // Registration form integration
-    const form = document.getElementById('registrationForm');
-    form.addEventListener('submit', async function(e) {
-        e.preventDefault();
+    if (regForm) {
+        regForm.addEventListener("submit", async function(event) {
+            event.preventDefault();
 
-        const formData = new FormData(form);
-        const role = formData.get('user_type');
-        let body;
-
-        if(role === 'student') {
-            body = {
-                username: formData.get('first_name') + formData.get('last_name'),
-                email: formData.get('email'),
-                password: formData.get('password'),
-                role: "student",
-                student_id: Date.now().toString(),
-                first_name: formData.get('first_name'),
-                last_name: formData.get('last_name'),
-                degree: "B.Sc IT",
-                year_of_study: "3"
+            // Collect form data
+            const formData = {
+                username: document.getElementById("username").value,
+                email: document.getElementById("email").value,
+                password: document.getElementById("password").value,
+                role: document.querySelector('input[name="role"]:checked').value // assuming you have radio buttons for role
             };
-        } else if(role === 'employer') {
-            body = {
-                username: formData.get('first_name') + formData.get('last_name'),
-                email: formData.get('email'),
-                password: formData.get('password'),
-                role: "employer",
-                employer_id: Date.now().toString(),
-                company_name: "Dummy Company",
-                industry: "Software Development"
-            };
-        }
 
-        try {
-            const response = await fetch('https://placement-portal-e0cggsa9gfg6ghg5.southafricanorth-01.azurewebsites.net/users/register/', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(body)
-            });
-            const result = await response.json();
-            if(response.ok) {
-                alert('Registration successful!');
-                form.reset();
-            } else {
-                alert('Error: ' + JSON.stringify(result));
+            try {
+                const response = await fetch(
+                    "https://placement-portal-e0cggsa9gfg6ghg5.southafricanorth-01.azurewebsites.net/users/register/",
+                    {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(formData)
+                    }
+                );
+
+                if (response.ok) {
+                    const data = await response.json();
+                    alert("Registration successful!");
+
+                    // Store role in localStorage for login redirect
+                    localStorage.setItem("userType", formData.role);
+
+                    // Redirect to login page
+                    window.location.href = "login.html";
+                } else {
+                    const errorData = await response.json();
+                    alert("Error: " + JSON.stringify(errorData));
+                }
+            } catch (error) {
+                alert("Request failed: " + error);
             }
-        } catch(err) {
-            console.error(err);
-            alert('Network error. Please try again.');
-        }
-    });
+        });
+    }
 });
 </script>
 
