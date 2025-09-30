@@ -265,27 +265,24 @@
 
         <!-- Integration Script -->
         <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const accessToken = localStorage.getItem('access_token');
-            const userType = localStorage.getItem('userType');
+document.addEventListener('DOMContentLoaded', function() {
+    const userRole = localStorage.getItem('userRole'); // get what role it is
 
-            // Hide irrelevant navigation links
-            if (userType === 'employer') {
-                const myAppLink = document.getElementById('nav-myapplications');
-                if (myAppLink) myAppLink.style.display = 'none';
-            }
-            if (userType === 'student') {
-                const empAdminLink = document.getElementById('nav-employeradmin');
-                if (empAdminLink) empAdminLink.style.display = 'none';
-            }
+    if (userRole === 'employer') {
+        const myAppLink = document.getElementById('nav-myapplications');
+        if (myAppLink) myAppLink.style.display = 'none';
+    }
+    if (userRole === 'student') {
+        const empAdminLink = document.getElementById('nav-employeradmin');
+        if (empAdminLink) empAdminLink.style.display = 'none';
+    }
 
-            // Redirect if not logged in or wrong user type
-            if (!accessToken) {
-                window.location.href = 'loginpage.html';
-            } else if (userType === 'employer') {
-                window.location.href = 'employeradminpage.html';
-            }
-        });
-        </script>
+    // Optional: display username on profile page
+    const usernameField = document.getElementById('inputUsername');
+    if (usernameField) {
+        usernameField.value = localStorage.getItem('username') || '';
+    }
+});
+</script>
     </body>
 </html>
