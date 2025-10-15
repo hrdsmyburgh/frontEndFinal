@@ -39,3 +39,29 @@
   background-color: orange;
   border-radius: 50%;
 }
+
+/* Custom styling for the Apply Filter button  */
+.filter-action-btn {
+  
+    background-color: #ffffff;
+    color: #F57F17;        
+    border: 2px solid #F57F17; 
+    border-radius: 5px;       
+
+    padding: 10px 25px;        
+    font-size: 16px;           
+    font-weight: 500;
+    
+    display: block;         
+    width: 100%;               
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-action-btn:hover {
+    background-color: #F57F17; 
+    color: #ffffff;           
+}

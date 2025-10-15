@@ -2394,8 +2394,8 @@ $range.ionRangeSlider({
     prettify_enabled: true,
     prettify_separator: ".",
   values_separator: " - ",
-  force_edges: true
-  
+  force_edges: true,
+  hide_from_to: true
 
 });
 

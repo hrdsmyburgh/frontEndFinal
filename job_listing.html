@@ -252,15 +252,15 @@
                                                     <p>Price :</p>
                                                 </div>
                                                 <div class="price_value d-flex justify-content-center">
-                                                    <input type="text" class="js-input-from" id="amount" readonly />
+                                                    <input type="text" class="js-input-from" readonly />
                                                     <span>to</span>
-                                                    <input type="text" class="js-input-to" id="amount" readonly />
+                                                    <input type="text" class="js-input-to" readonly />
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </aside>
-                                <button id="applyFilterBtn">Apply Filter</button>
+                                <button class="filter-action-btn" id="applyJobFilterBtn">Apply Filter</button>
                               <!-- Range Slider End -->
                             </div>
                         </div>
@@ -292,7 +292,7 @@
                                 </div>
                                 <!-- Count of Job list End -->
                                 <!-- single-job-content -->
-                                <div class="single-job-items mb-30">
+                                <div class="single-job-items mb-30" data-salary="45000" data-job-type="Full Time">
                                     <div class="job-items">
                                         <div class="company-img">
                                             <a href="#"><img src="assets/img/icon/job-list1.png" alt=""></a>
@@ -313,8 +313,7 @@
                                         <span>7 hours ago</span>
                                     </div>
                                 </div>
-                                <!-- single-job-content -->
-                                <div class="single-job-items mb-30">
+                                <div class="single-job-items mb-30" data-salary="15000" data-job-type="Part Time">
                                     <div class="job-items">
                                         <div class="company-img">
                                             <a href="#"><img src="assets/img/icon/job-list2.png" alt=""></a>
@@ -331,12 +330,11 @@
                                         </div>
                                     </div>
                                     <div class="items-link items-link2 f-right">
-                                        <a href="job_details.html">Full Time</a>
+                                        <a href="job_details.html">Part Time</a>
                                         <span>7 hours ago</span>
                                     </div>
                                 </div>
-                                <!-- single-job-content -->
-                                <div class="single-job-items mb-30">
+                                <div class="single-job-items mb-30" data-salary="60000" data-job-type="Full Time">
                                     <div class="job-items">
                                         <div class="company-img">
                                             <a href="#"><img src="assets/img/icon/job-list3.png" alt=""></a>
@@ -357,8 +355,7 @@
                                         <span>7 hours ago</span>
                                     </div>
                                 </div>
-                                <!-- single-job-content -->
-                                <div class="single-job-items mb-30">
+                                <div class="single-job-items mb-30" data-salary="40000" data-job-type="Full Time">
                                     <div class="job-items">
                                         <div class="company-img">
                                             <a href="#"><img src="assets/img/icon/job-list4.png" alt=""></a>
@@ -379,8 +376,7 @@
                                         <span>7 hours ago</span>
                                     </div>
                                 </div>
-                                <!-- single-job-content -->
-                                <div class="single-job-items mb-30">
+                                <div class="single-job-items mb-30" data-salary="10000" data-job-type="Part Time">
                                     <div class="job-items">
                                         <div class="company-img">
                                             <a href="#"><img src="assets/img/icon/job-list1.png" alt=""></a>
@@ -397,12 +393,11 @@
                                         </div>
                                     </div>
                                     <div class="items-link items-link2 f-right">
-                                        <a href="job_details.html">Full Time</a>
+                                        <a href="job_details.html">Part Time</a>
                                         <span>7 hours ago</span>
                                     </div>
                                 </div>
-                                <!-- single-job-content -->
-                                <div class="single-job-items mb-30">
+                                <div class="single-job-items mb-30" data-salary="50000" data-job-type="Full Time">
                                     <div class="job-items">
                                         <div class="company-img">
                                             <a href="#"><img src="assets/img/icon/job-list3.png" alt=""></a>
@@ -423,8 +418,7 @@
                                         <span>7 hours ago</span>
                                     </div>
                                 </div>
-                                <!-- single-job-content -->
-                                <div class="single-job-items mb-30">
+                                <div class="single-job-items mb-30" data-salary="5000" data-job-type="Internship">
                                     <div class="job-items">
                                         <div class="company-img">
                                             <a href="#"><img src="assets/img/icon/job-list4.png" alt=""></a>
@@ -441,19 +435,16 @@
                                         </div>
                                     </div>
                                     <div class="items-link items-link2 f-right">
-                                        <a href="job_details.html">Full Time</a>
+                                        <a href="job_details.html">Internship</a>
                                         <span>7 hours ago</span>
                                     </div>
                                 </div>
                             </div>
                         </section>
-                        <!-- Featured_job_end -->
-                    </div>
+                        </div>
                 </div>
             </div>
         </div>
-        <!-- Job List Area End -->
-        <!--Pagination Start  -->
         <div class="pagination-area pb-115 text-center">
             <div class="container">
                 <div class="row">
@@ -471,7 +462,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>                          
         <!--Pagination End  -->
         
     </main>
