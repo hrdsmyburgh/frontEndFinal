@@ -1,0 +1,65 @@
+<main>
+    <form id="jobForm" class="fs-form fs-layout__2-column">
+        <fieldset>
+            <legend class="fs-fieldset-title">Job Details</legend>
+            <div class="fs-field">
+                <label class="fs-label" for="jobtitle">Job Title</label>
+                <input class="fs-input" id="jobtitle" name="jobtitle" required />
+            </div>
+            <div class="fs-field">
+                <label class="fs-label" for="jobtype">Job Type</label>
+                <input class="fs-input" id="jobtype" name="jobtype" required />
+            </div>
+            <div class="fs-field">
+                <label class="fs-label" for="jobdetails">Job Description</label>
+                <textarea class="fs-input" id="jobdetails" name="jobdetails" rows="5" required
+                    style="height: 150px;"></textarea>
+            </div>
+            <div class="fs-field">
+                <label class="fs-label" for="location">Job Location</label>
+                <input class="fs-input" id="location" name="location" required />
+            </div>
+            <div class="fs-field">
+                <label class="fs-label" for="vacancies">Number of Vacancies</label>
+                <input class="fs-input" id="vacancies" name="vacancies" type="number" min="1" required />
+            </div>
+            <div class="fs-field">
+                <label class="fs-label" for="salary">Salary Range</label>
+                <input class="fs-input" id="salary" name="salary" required />
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend class="fs-fieldset-title">Required Knowledge, Skills and Abilities</legend>
+            <div class="fs-field">
+                <label class="fs-label" for="skills">Skills Required</label>
+                <textarea class="fs-input" id="skills" name="skills" rows="5" required
+                    style="height: 150px;"></textarea>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend class="fs-fieldset-title">Education & Experience</legend>
+            <div class="fs-field">
+                <label class="fs-label" for="experience">Experience/Education</label>
+                <textarea class="fs-input" id="experience" name="experience" rows="5" required
+                    style="height: 150px;"></textarea>
+            </div>
+        </fieldset>
+
+        <div class="fs-checkbox-field col-span-full">
+            <div class="fs-checkbox-wrapper">
+                <input class="fs-checkbox" id="bgv-consent" name="bgv-consent" type="checkbox" value="bgv-consent" />
+            </div>
+            <div>
+                <label class="fs-label" for="bgv-consent">Posting Consent</label>
+                <p class="fs-description">
+                    By checking this box, you confirm that all information is accurate and you consent to receiving applications.
+                </p>
+            </div>
+        </div>
+        <div class="fs-button-group">
+            <button class="fs-button" type="submit">Submit Job Post</button>
+        </div>
+    </form>
+</main>

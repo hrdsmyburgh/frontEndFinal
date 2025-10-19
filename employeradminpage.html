@@ -1,0 +1,331 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+           <title>Internship & Job Portal</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="assets/css/flaticon.css">
+        <link rel="stylesheet" href="assets/css/price_rangs.css">
+        <link rel="stylesheet" href="assets/css/slicknav.css">
+        <link rel="stylesheet" href="assets/css/animate.min.css">
+        <link rel="stylesheet" href="assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="assets/css/themify-icons.css">
+        <link rel="stylesheet" href="assets/css/slick.css">
+        <link rel="stylesheet" href="assets/css/nice-select.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+
+        <style>
+            .slicknav_menu { 
+                display: none; 
+                position: absolute; 
+                right: 0;
+                top: 15px; 
+                max-width: 280px; 
+                z-index: 1000; 
+                float: right; 
+                margin-right: 15px; 
+            }
+
+            @media (max-width: 991px) {
+                .slicknav_menu {
+                    display: block;
+                }
+            }
+            
+            .slicknav_nav {
+                margin-top: -30px; 
+                width: 100%; 
+            }
+            
+            .slicknav_btn {
+                float: right; 
+                margin: 0; 
+            }
+            
+            .our-services .col-xl-3 a {
+                display: block; 
+                text-decoration: none; 
+                color: inherit; 
+            }
+            
+            .single-services:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            .single-services {
+                transition: all 0.3s ease;
+            }
+        </style>
+        </head>
+
+<body>
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="assets/img/logo/logo22.png" alt="Logo">
+                </div>
+            </div>
+        </div>
+    </div>
+   <header>
+        <div class="header-area header-transparrent">
+            <div class="header-top header-sticky">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3 col-md-2">
+                            <div class="logo">
+                                <a href="index.html"><img src="assets/img/logo/logo22.png" alt="Internship & Job Portal Logo"></a>
+                            </div> 
+                        </div>
+                        <div class="col-lg-9 col-md-9">
+                            <div class="menu-wrapper">
+                                <div class="main-menu">
+                                    <nav class="d-none d-lg-block">
+                                        <ul id="navigation">
+                                            <li><a href="index.html">Home</a></li>
+                                            <li><a href="job_listing.html">Find Jobs</a></li>
+                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="studentprofile.html">My Profile</a></li>
+                                            <li><a href="myapplications.html">My Applications</a></li>
+                                            <li><a href="employeradminpage.html">Employer Admin</a></li> 
+                                        </ul>
+                                    </nav>
+                                </div>          
+                                <div class="header-btn d-none f-right d-lg-block">
+                                    <a href="registrationpage.html" class="btn head-btn1">Register</a>
+                                    <a href="loginpage.html" class="btn head-btn2">Login</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </header>
+
+    <main>
+        <section id="sidebar">
+            <a href="employeradminpage.html" class="brand">
+                <i class='bx bxs-briefcase'></i>
+                <span class="text">Employer Console</span>
+            </a>
+            <ul class="side-menu top">
+                <li id="nav-applications" class="active">
+                    <a href="#" data-target-url="application-reviews">
+                        <i class='bx bxs-dashboard'></i>
+                        <span class="text">Application Reviews</span>
+                    </a>
+                </li>
+                <li id="nav-jobpost">
+                    <a href="#" data-target-url="employerjobposting.html">
+                        <i class='bx bxs-add-to-queue'></i>
+                        <span class="text">Add New Job Post</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="side-menu">
+                <li>
+                    <a href="index.html" class="logout">
+                        <i class='bx bxs-log-out-circle'></i>
+                        <span class="text">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <section id="content">
+            <div id="dynamic-content-area">
+                <main>
+                    <ul class="box-info">
+                        <li>
+                            <i class='bx bxs-group'></i>
+                            <span class="text">
+                                <h3 id="applicationsCount">5</h3>
+                                <p>Total Applications</p>
+                            </span>
+                        </li>
+                    </ul>
+
+                    <div class="table-data">
+                        <div class="order">
+                            <div class="head">
+                                <h3>Recent Applications</h3>
+                                <i class='bx bx-filter' id="filterIcon"></i>
+                            </div>
+
+                            <div id="filterForm" class="filter-form">
+                                <input type="text" id="filterStatus" placeholder="Filter by Status">
+                                <input type="text" id="filterJob" placeholder="Filter by Job Applied">
+                                <button id="applyFilterBtn">Apply Filter</button>
+                            </div>
+
+                            <div class="actions">
+                                <select id="actionDropdown" class="action-dropdown">
+                                    <option value="" disabled selected>Select Action</option>
+                                    <option value="accept">Accept</option>
+                                    <option value="reject">Reject</option>
+                                </select>
+                                <button class="apply-action-btn">Apply</button>
+                            </div>
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th><input type="checkbox" id="selectAll"></th>
+                                        <th>Applicant Name</th>
+                                        <th>Job Applied</th>
+                                        <th>Status</th>
+                                        <th>CV</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-job="Internship" data-status="In progress">
+                                        <td>
+                                            <div class="fs-checkbox-wrapper">
+                                                <input aria-describedby="select-applicant" class="fs-checkbox"
+                                                    name="select-applicant" type="checkbox" value="select-applicant" />
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p>John Doe</p>
+                                        </td>
+                                        <td>Internship</td>
+                                        <td><span class="status completed">In progress</span></td>
+                                        <td><a href="assets/img/cvexample.pdf" style="color: red;"
+                                                target="_blank">cvname.pdf</a></td>
+                                    </tr>
+                                    <tr data-job="Full-time" data-status="Approved">
+                                        <td>
+                                            <div class="fs-checkbox-wrapper">
+                                                <input aria-describedby="select-applicant" class="fs-checkbox"
+                                                    name="select-applicant" type="checkbox" value="select-applicant" />
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p>Jane Smith</p>
+                                        </td>
+                                        <td>Full-time</td>
+                                        <td><span class="status completed">Approved</span></td>
+                                        <td><a href="assets/img/cvexample.pdf" style="color: red;"
+                                                target="_blank">cvname.pdf</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </section>
+    </main>
+
+    <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
+        <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
+        <script src="./assets/js/popper.min.js"></script>
+        <script src="./assets/js/bootstrap.min.js"></script>
+        <script src="./assets/js/jquery.slicknav.min.js"></script>
+        <script src="./assets/js/owl.carousel.min.js"></script>
+        <script src="./assets/js/slick.min.js"></script>
+        <script src="./assets/js/price_rangs.js"></script>
+        <script src="./assets/js/wow.min.js"></script>
+        <script src="./assets/js/animated.headline.js"></script>
+        <script src="./assets/js/jquery.magnific-popup.js"></script>
+        <script src="./assets/js/jquery.scrollUp.min.js"></script>
+        <script src="./assets/js/jquery.nice-select.min.js"></script>
+        <script src="./assets/js/jquery.sticky.js"></script>
+        <script src="./assets/js/contact.js"></script>
+        <script src="./assets/js/jquery.form.js"></script>
+        <script src="./assets/js/jquery.validate.min.js"></script>
+        <script src="./assets/js/mail-script.js"></script>
+        <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+        <script src="./assets/js/plugins.js"></script>
+        <script src="./assets/js/main.js"></script>
+
+        <script>
+    const jobCountsApiUrl = 'http://localhost:8000/api/job/job-counts/'; 
+
+    const categories = [
+        "Design-Creative",
+        "Development",
+        "Sales-Marketing",
+        "Mobile-Application",
+        "Construction",
+        "IT",
+        "Real-Estate",
+        "Content-Writer"
+    ];
+
+    function renderJobCounts(jobCountsData) {
+        categories.forEach(categoryKey => {
+            const count = jobCountsData[categoryKey] || 0; 
+            const span = document.querySelector(`.job-count[data-category="${categoryKey}"]`);
+            
+            if (span) {
+                span.textContent = `(${count} Jobs)`;
+            }
+        });
+    }
+
+    function fetchAndDisplayJobCounts() {
+        document.querySelectorAll('.job-count').forEach(span => {
+             span.textContent = `(Loading...)`;
+        });
+        
+        fetch(jobCountsApiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    console.error(`API Error: ${response.statusText}`);
+                    throw new Error(`Failed to load job counts (HTTP ${response.status})`);
+                }
+                return response.json();
+            })
+            .then(jobCountsData => {
+                renderJobCounts(jobCountsData);
+            })
+            .catch(error => {
+                console.error('API Fetch failed:', error);
+                document.querySelectorAll('.job-count').forEach(span => {
+                    span.textContent = `(Error loading)`;
+                });
+            });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchAndDisplayJobCounts();
+        
+        const userType = localStorage.getItem('userType');
+        const myAppLink = document.getElementById('nav-myapplications');
+        const empAdminLink = document.getElementById('nav-employeradmin');
+
+        const myAppLi = myAppLink ? myAppLink.closest('li') : null;
+        const empAdminLi = empAdminLink ? empAdminLink.closest('li') : null;
+
+        if (myAppLi && empAdminLi) {
+            if (userType === 'employer') {
+                myAppLi.style.display = 'none';
+                empAdminLi.style.display = 'block'; 
+            } else if (userType === 'student') { 
+                empAdminLi.style.display = 'none';
+                myAppLi.style.display = 'block';
+            } else {
+                myAppLi.style.display = 'none';
+                empAdminLi.style.display = 'none';
+            }
+        }
+    });
+</script>
+</body>
+
+</html>

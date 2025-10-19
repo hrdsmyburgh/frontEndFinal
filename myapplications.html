@@ -1,0 +1,326 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+           <title>Internship & Job Portal</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="assets/css/flaticon.css">
+        <link rel="stylesheet" href="assets/css/price_rangs.css">
+        <link rel="stylesheet" href="assets/css/slicknav.css">
+        <link rel="stylesheet" href="assets/css/animate.min.css">
+        <link rel="stylesheet" href="assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="assets/css/themify-icons.css">
+        <link rel="stylesheet" href="assets/css/slick.css">
+        <link rel="stylesheet" href="assets/css/nice-select.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+
+        <style>
+            .slicknav_menu { 
+                display: none; 
+                position: absolute; 
+                right: 0;
+                top: 15px; 
+                max-width: 280px; 
+                z-index: 1000; 
+                float: right; 
+                margin-right: 15px; 
+            }
+
+            @media (max-width: 991px) {
+                .slicknav_menu {
+                    display: block;
+                }
+            }
+            
+            .slicknav_nav {
+                margin-top: -30px; 
+                width: 100%; 
+            }
+            
+            .slicknav_btn {
+                float: right; 
+                margin: 0; 
+            }
+            
+            .our-services .col-xl-3 a {
+                display: block; 
+                text-decoration: none; 
+                color: inherit; 
+            }
+            
+            .single-services:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            .single-services {
+                transition: all 0.3s ease;
+            }
+        </style>
+        </head>
+
+   <body>
+       
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="assets/img/logo/logo22.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <header>
+        <div class="header-area header-transparrent">
+            <div class="header-top header-sticky">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3 col-md-2">
+                            <div class="logo">
+                                <a href="index.html"><img src="assets/img/logo/logo22.png" alt="Internship & Job Portal Logo"></a>
+                            </div> 
+                        </div>
+                        <div class="col-lg-9 col-md-9">
+                            <div class="menu-wrapper">
+                                <div class="main-menu">
+                                    <nav class="d-none d-lg-block">
+                                        <ul id="navigation">
+                                            <li><a href="index.html">Home</a></li>
+                                            <li><a href="job_listing.html">Find Jobs</a></li>
+                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="studentprofile.html">My Profile</a></li>
+                                            <li><a href="myapplications.html">My Applications</a></li>
+                                            <li><a href="employeradminpage.html">Employer Admin</a></li> 
+                                        </ul>
+                                    </nav>
+                                </div>          
+                                <div class="header-btn d-none f-right d-lg-block">
+                                    <a href="registrationpage.html" class="btn head-btn1">Register</a>
+                                    <a href="loginpage.html" class="btn head-btn2">Login</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </header>
+    <main>
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bxs-smile'></i>
+			<span class="text">Student Profile</span>
+		</a>
+		<ul class="side-menu top">
+			<li class="active">
+				<a href="#">
+					<i class='bx bxs-dashboard' ></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			
+		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="index.html" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<section id="content">
+		<main>
+			<ul class="box-info">
+				<li>
+					<i class='bx bxs-group' ></i>
+					<span class="text">
+						<h3 id="applicationCount">5</h3>
+						<p>Applications</p>
+					</span>
+				</li>
+			</ul>
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+    <h3>Recent Applications</h3>
+    <i class='bx bx-filter' id="filterIcon"></i>
+</div>
+<div id="filterForm" class="filter-form">
+    <input type="text" id="filterStatus" placeholder="Filter by Status">
+    <input type="text" id="filterJob" placeholder="Filter by Job Applied">
+    <button id="applyFilterBtn">Apply Filter</button>
+</div>
+                    <br>
+                    <div class="actions">
+                            <select id="actionDropdown" class="action-dropdown">
+                                <option value="" disabled selected>Action</option>
+                                <option value="accept">Withdraw application</option>
+                            </select>
+                            <button class="apply-action-btn">Apply</button>
+                        </div>
+					<table>
+						<thead>
+							<tr>
+                                <th></th>
+                                <th>Job applied</th>
+								<th>Company</th>
+								<th>Status</th>
+                                <th>CV</th>
+                                <th>Withdraw Application</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+                                <td>
+                                        <div class="fs-checkbox-wrapper">
+                                            <input aria-describedby="select-job"
+                                                   class="fs-checkbox"
+                                                   id="select-job"
+                                                   name="select-job"
+                                                   type="checkbox"
+                                                   value="select-job" />
+                                        </div>
+                                    </td>
+                                <td>Internship</td>
+								<td id="jobtype">Tech Creators</td>
+								<td id="status"><span class="status completed">In progress</span></td>
+                                <td id="cv"><a href="assets/img/cvexample.pdf" style="color: orange;" target="_blank">cvname.pdf</a></td>
+                                <td id="withdraw" style="color: red;">Withdraw Application</td>
+							</tr>
+                            <tr>
+                                <td>
+                                        <div class="fs-checkbox-wrapper">
+                                            <input aria-describedby="select-job"
+                                                   class="fs-checkbox"
+                                                   id="select-job"
+                                                   name="select-job"
+                                                   type="checkbox"
+                                                   value="select-job" />
+                                        </div>
+                                    </td>
+                                <td>Internship</td>
+								<td id="jobtype">Amazing Tech</td>
+								<td id="status"><span class="status completed">In progress</span></td>
+                                <td id="cv"><a href="assets/img/cvexample.pdf" style="color: orange;" target="_blank">cvname.pdf</a></td>
+                                <td id="withdraw" style="color: red;">Withdraw Application</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				
+			</div>
+		</main>
+	</section>
+    </main>
+    
+	<script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
+        <script src="./assets/js/popper.min.js"></script>
+        <script src="./assets/js/bootstrap.min.js"></script>
+        <script src="./assets/js/jquery.slicknav.min.js"></script>
+        <script src="./assets/js/owl.carousel.min.js"></script>
+        <script src="./assets/js/slick.min.js"></script>
+        <script src="./assets/js/price_rangs.js"></script>
+        <script src="./assets/js/wow.min.js"></script>
+        <script src="./assets/js/animated.headline.js"></script>
+        <script src="./assets/js/jquery.magnific-popup.js"></script>
+        <script src="./assets/js/jquery.scrollUp.min.js"></script>
+        <script src="./assets/js/jquery.nice-select.min.js"></script>
+        <script src="./assets/js/jquery.sticky.js"></script>
+        <script src="./assets/js/contact.js"></script>
+        <script src="./assets/js/jquery.form.js"></script>
+        <script src="./assets/js/jquery.validate.min.js"></script>
+        <script src="./assets/js/mail-script.js"></script>
+        <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+        <script src="./assets/js/plugins.js"></script>
+        <script src="./assets/js/main.js"></script>
+
+    
+       <script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('applyFilterBtn').addEventListener('click', function() {
+        const jobFilter = document.getElementById('filterJob').value.trim().toLowerCase();
+        const statusFilter = document.getElementById('filterStatus').value.trim().toLowerCase();
+        document.querySelectorAll('table tbody tr').forEach(function(row) {
+            const jobText = row.cells[2].textContent.trim().toLowerCase();
+            const statusText = row.cells[3].textContent.trim().toLowerCase();
+            const matchesJob = !jobFilter || jobText.includes(jobFilter);
+            const matchesStatus = !statusFilter || statusText.includes(statusFilter);
+            row.style.display = (matchesJob && matchesStatus) ? '' : 'none';
+        });
+    });
+});
+
+</script>
+    <script>document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('applyFilterBtn').addEventListener('click', function() {
+            const jobFilter = document.getElementById('filterJob').value.trim().toLowerCase();
+            const statusFilter = document.getElementById('filterStatus').value.trim().toLowerCase();
+
+        document.querySelectorAll('table tbody tr').forEach(function(row) {
+            const jobText = row.cells[1].textContent.trim().toLowerCase(); 
+            const statusText = row.cells[3].textContent.trim().toLowerCase();
+            const matchesJob = !jobFilter || jobText.includes(jobFilter);
+            const matchesStatus = !statusFilter || statusText.includes(statusFilter);
+            row.style.display = (matchesJob && matchesStatus) ? '' : 'none';
+        });
+    });
+
+    document.querySelector('.apply-action-btn').addEventListener('click', function() {
+        const action = document.getElementById('actionDropdown').value;
+        if (action === 'accept') {
+            const rows = document.querySelectorAll('table tbody tr');
+            for (let i = rows.length - 1; i >= 0; i--) {
+                const row = rows[i];
+                const checkbox = row.cells[0].querySelector('input[type="checkbox"]');
+                if (checkbox && checkbox.checked) {
+                    row.parentNode.removeChild(row);
+                }
+            }
+        }
+    });
+});</script>
+       <script>document.addEventListener('DOMContentLoaded', function() {
+    const userType = localStorage.getItem('userType');
+    if (userType === 'employer') {
+        const myAppLink = document.getElementById('nav-myapplications');
+        if (myAppLink) myAppLink.style.display = 'none';
+    }
+    if (userType === 'student') {
+        const empAdminLink = document.getElementById('nav-employeradmin');
+        if (empAdminLink) empAdminLink.style.display = 'none';
+    }
+});</script>
+       <script>
+document.addEventListener('DOMContentLoaded', function() {
+    function updateApplicationCount() {
+        const rows = document.querySelectorAll('table tbody tr');
+        let count = 0;
+        rows.forEach(function(row) {
+            if (row.style.display !== 'none') count++;
+        });
+        document.getElementById('applicationCount').textContent = count;
+    }
+    updateApplicationCount();
+
+    document.getElementById('applyFilterBtn').addEventListener('click', function() {
+        updateApplicationCount();
+    });
+
+    document.querySelector('.apply-action-btn').addEventListener('click', function() {
+        updateApplicationCount();
+    });
+});
+</script>
+       </body>
+</html>

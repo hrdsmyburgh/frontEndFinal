@@ -1,0 +1,413 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+           <title>Internship & Job Portal</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="assets/css/flaticon.css">
+        <link rel="stylesheet" href="assets/css/price_rangs.css">
+        <link rel="stylesheet" href="assets/css/slicknav.css">
+        <link rel="stylesheet" href="assets/css/animate.min.css">
+        <link rel="stylesheet" href="assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="assets/css/themify-icons.css">
+        <link rel="stylesheet" href="assets/css/slick.css">
+        <link rel="stylesheet" href="assets/css/nice-select.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+
+        <style>
+            .slicknav_menu { 
+                display: none; 
+                position: absolute; 
+                right: 0;
+                top: 15px; 
+                max-width: 280px; 
+                z-index: 1000; 
+                float: right; 
+                margin-right: 15px; 
+            }
+
+            @media (max-width: 991px) {
+                .slicknav_menu {
+                    display: block;
+                }
+            }
+            
+            .slicknav_nav {
+                margin-top: -30px; 
+                width: 100%; 
+            }
+            
+            .slicknav_btn {
+                float: right; 
+                margin: 0; 
+            }
+            
+            .our-services .col-xl-3 a {
+                display: block; 
+                text-decoration: none; 
+                color: inherit; 
+            }
+            
+            .single-services:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            .single-services {
+                transition: all 0.3s ease;
+            }
+        </style>
+        </head>
+
+<body>
+<div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+            <div class="preloader-circle"></div>
+            <div class="preloader-img pere-text">
+                <img src="assets/img/logo/logo22.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<header>
+        <div class="header-area header-transparrent">
+            <div class="header-top header-sticky">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3 col-md-2">
+                            <div class="logo">
+                                <a href="index.html"><img src="assets/img/logo/logo22.png" alt="Internship & Job Portal Logo"></a>
+                            </div> 
+                        </div>
+                        <div class="col-lg-9 col-md-9">
+                            <div class="menu-wrapper">
+                                <div class="main-menu">
+                                    <nav class="d-none d-lg-block">
+                                        <ul id="navigation">
+                                            <li><a href="index.html">Home</a></li>
+                                            <li><a href="job_listing.html">Find Jobs</a></li>
+                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="studentprofile.html">My Profile</a></li>
+                                            <li><a href="myapplications.html">My Applications</a></li>
+                                            <li><a href="employeradminpage.html">Employer Admin</a></li> 
+                                        </ul>
+                                    </nav>
+                                </div>          
+                                <div class="header-btn d-none f-right d-lg-block">
+                                    <a href="registrationpage.html" class="btn head-btn1">Register</a>
+                                    <a href="loginpage.html" class="btn head-btn2">Login</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </header>
+
+<main>
+    <div class="container">
+        <div class="title">Registration</div>
+        <div class="content">
+            <form id="registrationForm">
+                <div class="user-details">
+                    <div class="input-box">
+                        <span class="details">Full Name</span>
+                        <input type="text" name="first_name" id="first_name" placeholder="Enter your name" required> 
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Last Name</span>
+                        <input type="text" name="last_name" id="last_name" placeholder="Enter your last name" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Email</span>
+                        <input type="email" name="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Phone Number</span>
+                        <input type="text" name="phone_number" id="phone_number" placeholder="Enter your number" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Password</span>
+                        <input type="password" name="password" id="password" placeholder="Enter your password" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="details">Confirm Password</span>
+                        <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm your password" required>
+                    </div>
+                </div>
+
+                <div class="gender-details">
+                    <input type="radio" name="gender" id="dot-1" value="male">
+                    <input type="radio" name="gender" id="dot-2" value="female">
+                    <input type="radio" name="gender" id="dot-3" value="other">
+                    <span class="gender-title">Gender</span>
+                    <div class="category">
+                        <label for="dot-1">
+                            <span class="dot one"></span>
+                            <span class="gender">Male</span>
+                        </label>
+                        <label for="dot-2">
+                            <span class="dot two"></span>
+                            <span class="gender">Female</span>
+                        </label>
+                        <label for="dot-3">
+                            <span class="dot three"></span>
+                            <span class="gender">Prefer not to say</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="user-type-details">
+                    <span class="details">Register As</span>
+                    <div class="category">
+                        <label>
+                            <input type="radio" name="user_type" value="student" required>
+                            <span class="dot one"></span>
+                            <span class="user-type">Student / External Applicant</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="user_type" value="employer">
+                            <span class="dot two"></span>
+                            <span class="user-type">Employer</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div id="profileFields">
+                    </div>
+
+                <div class="button">
+                    <input type="submit" value="Register">
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-area footer-bg footer-padding">
+        <div class="container">
+            <div class="row d-flex justify-content-between">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                    <div class="single-footer-caption mb-50">
+                        <div class="single-footer-caption mb-30">
+                            <div class="footer-tittle">
+                                <h4>About Us</h4>
+                                <div class="footer-pera">
+                                    <p>Internship & Job Portal Hub. A place where you can find your dream job.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
+                    <div class="single-footer-caption mb-50">
+                        <div class="footer-tittle">
+                            <h4>Important Link</h4>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="job_listing.html">Find Jobs</a></li>
+                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="studentprofile.html">My Profile</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">
+                    <div class="single-footer-caption mb-50">
+                        <div class="footer-tittle">
+                            <h4>Newsletter</h4>
+                            <div class="footer-pera footer-pera2">
+                                <p>Sign up to our newsletter to be updated with new postings!</p>
+                            </div>
+                            <div class="footer-form" >
+                                <div id="mc_embed_signup">
+                                    <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                                            method="get" class="subscribe_form relative mail_part">
+                                        <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
+                                                class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
+                                                onblur="this.placeholder = ' Email Address '">
+                                        <div class="form-icon">
+                                            <button type="submit" name="submit" id="newsletter-submit"
+                                                    class="email_icon newsletter-submit button-contactForm"><img src="assets/img/icon/form.png" alt=""></button>
+                                        </div>
+                                        <div class="mt-10 info"></div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
+        <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
+        <script src="./assets/js/popper.min.js"></script>
+        <script src="./assets/js/bootstrap.min.js"></script>
+        <script src="./assets/js/jquery.slicknav.min.js"></script>
+        <script src="./assets/js/owl.carousel.min.js"></script>
+        <script src="./assets/js/slick.min.js"></script>
+        <script src="./assets/js/price_rangs.js"></script>
+        <script src="./assets/js/wow.min.js"></script>
+        <script src="./assets/js/animated.headline.js"></script>
+        <script src="./assets/js/jquery.magnific-popup.js"></script>
+        <script src="./assets/js/jquery.scrollUp.min.js"></script>
+        <script src="./assets/js/jquery.nice-select.min.js"></script>
+        <script src="./assets/js/jquery.sticky.js"></script>
+        <script src="./assets/js/contact.js"></script>
+        <script src="./assets/js/jquery.form.js"></script>
+        <script src="./assets/js/jquery.validate.min.js"></script>
+        <script src="./assets/js/mail-script.js"></script>
+        <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+        <script src="./assets/js/plugins.js"></script>
+        <script src="./assets/js/main.js"></script>       
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const regForm = document.getElementById("registrationForm"); 
+    const profileFieldsContainer = document.getElementById('profileFields');
+    const userTypeInputs = document.querySelectorAll('input[name="user_type"]');
+
+    const studentFieldsHTML = `
+        <div class="input-box">
+            <span class="details">Student ID (Required)</span>
+            <input type="text" name="student_id" id="student_id" placeholder="Enter Student ID" required>
+        </div>
+        <div class="input-box">
+            <span class="details">Degree</span>
+            <input type="text" name="degree" id="degree" placeholder="Enter your degree">
+        </div>
+        <div class="input-box">
+            <span class="details">Year of Study</span>
+            <input type="number" name="year_of_study" id="year_of_study" placeholder="e.g., 2">
+        </div>
+    `;
+
+    const employerFieldsHTML = `
+        <div class="input-box">
+            <span class="details">Company Name (Required)</span>
+            <input type="text" name="company_name" id="company_name" placeholder="Enter Company Name" required>
+        </div>
+        <div class="input-box">
+            <span class="details">Industry (Required)</span>
+            <input type="text" name="industry" id="industry" placeholder="Enter Industry" required>
+        </div>
+    `;
+
+    function renderProfileFields(role) {
+        profileFieldsContainer.innerHTML = ''; // Clear previous fields
+        if (role === 'student') {
+            profileFieldsContainer.innerHTML = studentFieldsHTML;
+        } else if (role === 'employer') {
+            profileFieldsContainer.innerHTML = employerFieldsHTML;
+        }
+    }
+
+    userTypeInputs.forEach(input => {
+        input.addEventListener('change', (e) => {
+            renderProfileFields(e.target.value);
+        });
+    });
+
+    if (regForm) {
+        regForm.addEventListener("submit", async function(event) {
+            event.preventDefault(); 
+            
+            const firstName = document.getElementById("first_name").value;
+            const lastName = document.getElementById("last_name").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirm_password").value;
+            const userTypeElement = document.querySelector('input[name="user_type"]:checked');
+            const role = userTypeElement ? userTypeElement.value : null;
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return;
+            }
+            if (!role) {
+                alert("Please select a registration type (Student or Employer).");
+                return;
+            }
+
+            let apiData = {
+                username: email,
+                email: email,
+                password: password,
+                role: role, 
+                first_name: firstName,
+                last_name: lastName,
+                phone_number: document.getElementById("phone_number").value,
+                gender: document.querySelector('input[name="gender"]:checked').value
+            };
+
+            if (role === 'student') {
+                const studentIdElement = document.getElementById('student_id');
+                if (!studentIdElement || !studentIdElement.value) {
+                    alert("Student ID is required for student registration.");
+                    return;
+                }
+                apiData.student_id = studentIdElement.value;
+                apiData.degree = document.getElementById('degree')?.value || ""; 
+                apiData.year_of_study = document.getElementById('year_of_study')?.value || null;
+            } else if (role === 'employer') {
+                const companyNameElement = document.getElementById('company_name');
+                const industryElement = document.getElementById('industry');
+                if (!companyNameElement || !companyNameElement.value || !industryElement || !industryElement.value) {
+                    alert("Company Name and Industry are required for employer registration.");
+                    return;
+                }
+                apiData.company_name = companyNameElement.value;
+                apiData.industry = industryElement.value;
+            }
+
+            console.log("Submitting data:", apiData); 
+
+            try {
+                const response = await fetch(
+                    "http://127.0.0.1:8000/api/users/register/",
+                    {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(apiData)
+                    }
+                );
+
+                if (response.ok) {
+                    const data = await response.json();
+                    alert("Registration successful!");
+                    localStorage.setItem("userType", apiData.role);
+                    localStorage.setItem("username", firstName + " " + lastName);
+                    window.location.href = "loginpage.html";
+                } else {
+                    const errorData = await response.json();
+                    alert("Registration Failed. Server Error: " + JSON.stringify(errorData));
+                }
+            } catch (error) {
+                alert("Request failed. Please check your backend's CORS configuration. Error: " + error);
+            }
+        });
+    }
+});
+</script>
+
+</body>
+</html>

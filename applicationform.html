@@ -1,0 +1,511 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+           <title>Internship & Job Portal</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="assets/css/flaticon.css">
+        <link rel="stylesheet" href="assets/css/price_rangs.css">
+        <link rel="stylesheet" href="assets/css/slicknav.css">
+        <link rel="stylesheet" href="assets/css/animate.min.css">
+        <link rel="stylesheet" href="assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="assets/css/themify-icons.css">
+        <link rel="stylesheet" href="assets/css/slick.css">
+        <link rel="stylesheet" href="assets/css/nice-select.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+
+        <style>
+            .slicknav_menu { 
+                display: none; 
+                position: absolute; 
+                right: 0;
+                top: 15px; 
+                max-width: 280px; 
+                z-index: 1000; 
+                float: right; 
+                margin-right: 15px; 
+            }
+
+            @media (max-width: 991px) {
+                .slicknav_menu {
+                    display: block;
+                }
+            }
+            
+            .slicknav_nav {
+                margin-top: -30px; 
+                width: 100%; 
+            }
+            
+            .slicknav_btn {
+                float: right; 
+                margin: 0; 
+            }
+            
+            .our-services .col-xl-3 a {
+                display: block; 
+                text-decoration: none; 
+                color: inherit; 
+            }
+            
+            .single-services:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            .single-services {
+                transition: all 0.3s ease;
+            }
+        </style>
+        </head>
+
+<body>
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="assets/img/logo/logo22.png" alt="Logo">
+                </div>
+            </div>
+        </div>
+    </div>
+    <header>
+        <div class="header-area header-transparant">
+            <div class="main-header header-sticky">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-2 col-lg-2">
+                            <div class="logo">
+                                <a href="index.html"><img src="assets/img/logo/logo22.png" alt="Logo"></a>
+                            </div>
+                        </div>
+                        <div class="col-xl-10 col-lg-10">
+                            <div class="main-menu">
+                                <nav class="d-none d-lg-block">
+                                    <ul id="navigation">
+                                        <li><a href="index.html">Home</a></li>
+                                        <li><a href="job_listing.html">Find Jobs</a></li>
+                                        <li><a href="studentprofile.html">My Profile</a></li>
+                                        <li><a href="myapplications.html" id="nav-myapplications">My Applications</a></li>
+                                        <li><a href="employeradminpage.html" id="nav-employeradmin">Employer Admin</a></li>
+                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="about.html">About Us</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="header-btn d-none f-right d-lg-block">
+                                <a href="registrationpage.html" class="btn head-btn1">Register</a>
+                                <a href="loginpage.html" class="btn head-btn2">Login</a>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="slider-area">
+            <div class="single-slider section-overly slider-height2 d-flex align-items-center"
+                data-background="assets/img/hero/about.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap text-center">
+                                <h2>Apply for a Position</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="job-post-area pb-120 pt-100">
+            <div class="container">
+                <div id="application-content">
+                    <form id="applicationForm" class="fs-form fs-layout__2-column">
+                        <fieldset>
+                            <legend class="fs-fieldset-title">Personal Details</legend>
+                            <div class="fs-field">
+                                <label class="fs-label" for="name">Full Name</label>
+                                <input class="fs-input" id="name" name="name" type="text" required
+                                    autocomplete="name" />
+                            </div>
+                            <div class="fs-field">
+                                <label class="fs-label" for="dob">Date of Birth</label>
+                                <input class="fs-input" id="dob" name="dob" type="text" placeholder="MM-DD-YYYY"
+                                    required autocomplete="bday" />
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend class="fs-fieldset-title">Address Details</legend>
+                            <div class="fs-field">
+                                <label class="fs-label" for="address-1">Address Line 1</label>
+                                <input class="fs-input" id="address-1" name="address_line_1" type="text"
+                                    autocomplete="address-line1" />
+                            </div>
+                            <div class="fs-field">
+                                <label class="fs-label" for="address-2">Address Line 2</label>
+                                <input class="fs-input" id="address-2" name="address_line_2" type="text"
+                                    autocomplete="address-line2" />
+                            </div>
+                            <div class="fs-field">
+                                <label class="fs-label" for="city">City</label>
+                                <input class="fs-input" id="city" name="city" type="text"
+                                    autocomplete="address-level2" />
+                            </div>
+                            <div class="fs-field">
+                                <label class="fs-label" for="state">State / Province</label>
+                                <input class="fs-input" id="state" name="state" type="text"
+                                    autocomplete="address-level1" />
+                            </div>
+                            <div class="fs-field">
+                                <label class="fs-label" for="zip-code">Postal / Zip Code</label>
+                                <input class="fs-input" id="zip-code" name="zip_code" type="text"
+                                    autocomplete="postal-code" />
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend class="fs-fieldset-title">Contact Information</legend>
+                            <div class="fs-field">
+                                <label class="fs-label" for="email">Email</label>
+                                <input class="fs-input" id="email" name="email" type="email" required
+                                    autocomplete="email" />
+                                <p class="fs-description">Please ensure this is a valid email address.</p>
+                            </div>
+                            <div class="fs-field">
+                                <label class="fs-label" for="number">Contact Number</label>
+                                <input class="fs-input" id="number" name="contact_number" type="tel"
+                                    placeholder="(000) 000-0000" required autocomplete="tel" />
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend class="fs-fieldset-title">Last Role Details</legend>
+                            <div class="fs-field">
+                                <label class="fs-label" for="previous-job-title">Job Title at your previous role</label>
+                                <input class="fs-input" id="previous-job-title" name="previous_job_title" type="text" />
+                            </div>
+                            <div class="fs-field">
+                                <label class="fs-label" for="previous-employer">Name of your previous employer</label>
+                                <input class="fs-input" id="previous-employer" name="previous_employer" type="text" />
+                            </div>
+                            <div class="fs-field">
+                                <label class="fs-label" for="latest-role-start-date">When did you start at your latest
+                                    role?</label>
+                                <input class="fs-input" id="latest-role-start-date" name="latest_role_start_date"
+                                    type="text" placeholder="MM-YYYY" />
+                            </div>
+                            <div class="fs-field">
+                                <label class="fs-label" for="latest-role-end-date">End date of your latest role</label>
+                                <input class="fs-input" id="latest-role-end-date" name="latest_role_end_date"
+                                    type="text" placeholder="MM-YYYY." />
+                            </div>
+                            <div class="fs-field">
+                                <label class="fs-label" for="role-description">Role Description</label>
+                                <textarea class="fs-textarea" id="role-description" name="role_description"
+                                    placeholder="Please describe what you did at your latest role"></textarea>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend class="fs-fieldset-title">Education Details</legend>
+                            <div class="fs-field">
+                                <label class="fs-label" for="highest-degree">Highest Degree</label>
+                                <input class="fs-input" id="highest-degree" name="highest_degree" type="text" />
+                                <p class="fs-description">Please state the highest educational degree you've completed.
+                                </p>
+                            </div>
+                            <div class="fs-field">
+                                <label class="fs-label" for="school">School/University</label>
+                                <input class="fs-input" id="school" name="school" type="text" />
+                                <p class="fs-description">School or university you attended.</p>
+                            </div>
+                            <div class="fs-field">
+                                <label class="fs-label" for="certifications">Certifications</label>
+                                <input class="fs-input" id="certifications" name="certifications" type="text" />
+                                <p class="fs-description">Mention any relevant certifications you have
+                                    (comma-separated).
+                                </p>
+                            </div>
+                            <div class="fs-field">
+                                <label class="fs-label" for="grad-year">Graduation Year</label>
+                                <input class="fs-input" id="grad-year" name="grad_year" type="text"
+                                    placeholder="YYYY" />
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend class="fs-fieldset-title">Job Application Details & Uploads</legend>
+                            <div class="fs-field">
+                                <input type="hidden" id="job-id" name="job" value="" /> 
+
+                                <label class="fs-label" for="position-applied">Position you want to apply for</label>
+                                <select class="fs-select" id="position-applied" name="position_applied">
+                                    <option value="software-engineer">Software Engineer</option>
+                                    <option value="senior-software-engineer">Senior Software Engineer</option>
+                                    <option value="ux-designer">UX Designer</option>
+                                    <option value="marketing-specialist">Marketing Specialist</option>
+                                </select>
+                            </div>
+                            <div class="fs-field">
+                                <label class="fs-label" for="start-date">When can you start?</label>
+                                <input class="fs-input" id="start-date" name="start_date" type="text"
+                                    placeholder="DD-MM-YYYY" required />
+                            </div>
+                            <div class="fs-field">
+                                <label class="fs-label" for="source">How did you learn about us?</label>
+                                <select class="fs-select" id="source" name="source">
+                                    <option value="search-engines">Search Engines (Google, DuckDuckGo, etc)</option>
+                                    <option value="social-media">Social Media</option>
+                                    <option value="company-website">Company Website</option>
+                                    <option value="jobs-board">Online Jobs Board</option>
+                                    <option value="review-site">Review sites (G2, Capterra, etc)</option>
+                                </select>
+                            </div>
+
+                            <div class="fs-field">
+                                <label class="fs-label" for="real-file">Upload CV/Resume</label>
+                                <input type="file" id="real-file" name="resume" hidden="hidden" required />
+                                <button type="button" id="custom-button">CHOOSE FILE</button>
+                                <span id="custom-text">No file chosen, yet.</span>
+                                <p class="fs-description">Upload your current CV or Resume.</p>
+                            </div>
+
+                            <div class="fs-field">
+                                <label class="fs-label" for="cover-letter-file">Upload Cover Letter (Optional)</label>
+                                <input type="file" id="cover-letter-file" name="cover_letter" hidden="hidden" />
+                                <button type="button" id="cover-letter-button">CHOOSE FILE</button>
+                                <span id="cover-letter-text">No file chosen, yet.</span>
+                                <p class="fs-description">Upload an optional cover letter.</p>
+                            </div>
+
+                        </fieldset>
+                        <fieldset>
+                            <legend class="fs-fieldset-title">References</legend>
+                            <div class="fs-field">
+                                <label class="fs-label" for="reference-name">Reference Name</label>
+                                <input class="fs-input" id="reference-name" name="reference_name" type="text" />
+                                <p class="fs-description">Name of a reference at one of your past roles.</p>
+                            </div>
+                            <div class="fs-field">
+                                <label class="fs-label" for="reference-relationship">Relationship</label>
+                                <input class="fs-input" id="reference-relationship" name="reference_relationship"
+                                    type="text" />
+                                <p class="fs-description">What was your relationship with this person (e.g., Former
+                                    Manager)?</p>
+                            </div>
+                            <div class="fs-field">
+                                <label class="fs-label" for="reference-contact">Reference Contact</label>
+                                <input class="fs-input" id="reference-contact" name="reference_contact" type="text"
+                                    placeholder="Email or Phone Number" />
+                                <p class="fs-description">Please provide a phone number or an email address of the
+                                    reference.</p>
+                            </div>
+                        </fieldset>
+
+                        <div class="fs-checkbox-field col-span-full">
+                            <div class="fs-checkbox-wrapper">
+                                <input aria-describedby="bgv-consent-description" class="fs-checkbox" id="bgv-consent"
+                                    name="bgv_consent" type="checkbox" value="bgv-consent" required />
+                            </div>
+                            <div>
+                                <label class="fs-label" for="bgv-consent">Background Check Consent</label>
+                                <p class="fs-description" id="bgv-consent-description">
+                                    By checking this box, you consent to a formal background check by one of
+                                    our partners.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="fs-button-group">
+                            <button class="fs-button" type="submit">Submit Application</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-area footer-bg footer-padding">
+            <div class="container">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                        <div class="single-footer-caption mb-50">
+                            <div class="single-footer-caption mb-30">
+                                <div class="footer-tittle">
+                                    <h4>About Us</h4>
+                                    <div class="footer-pera">
+                                        <p>Internship & Job Portal Hub. A place where you can find your dream job.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
+        <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
+        <script src="./assets/js/popper.min.js"></script>
+        <script src="./assets/js/bootstrap.min.js"></script>
+        <script src="./assets/js/jquery.slicknav.min.js"></script>
+        <script src="./assets/js/owl.carousel.min.js"></script>
+        <script src="./assets/js/slick.min.js"></script>
+        <script src="./assets/js/price_rangs.js"></script>
+        <script src="./assets/js/wow.min.js"></script>
+        <script src="./assets/js/animated.headline.js"></script>
+        <script src="./assets/js/jquery.magnific-popup.js"></script>
+        <script src="./assets/js/jquery.scrollUp.min.js"></script>
+        <script src="./assets/js/jquery.nice-select.min.js"></script>
+        <script src="./assets/js/jquery.sticky.js"></script>
+        <script src="./assets/js/contact.js"></script>
+        <script src="./assets/js/jquery.form.js"></script>
+        <script src="./assets/js/jquery.validate.min.js"></script>
+        <script src="./assets/js/mail-script.js"></script>
+        <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+        <script src="./assets/js/plugins.js"></script>
+        <script src="./assets/js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const applicationForm = document.getElementById('applicationForm');
+
+        const authToken = localStorage.getItem('authToken');
+         if (!authToken) {
+            localStorage.setItem('preLoginRedirect', window.location.href); 
+
+             alert("Session expired or you are not logged in. Please log in to apply.");
+            window.location.href = 'loginpage.html';
+            return; 
+         }
+
+         const userType = localStorage.getItem('userType');
+        const myAppLink = document.getElementById('nav-myapplications');
+         const empAdminLink = document.getElementById('nav-employeradmin');
+
+        if (myAppLink && userType === 'employer') {
+            const li = myAppLink.closest('li');
+             if (li) li.style.display = 'none';
+        }
+         if (empAdminLink && userType === 'student') {
+             const li = empAdminLink.closest('li');
+             if (li) li.style.display = 'none';
+         }
+
+        if (typeof jQuery !== 'undefined' && jQuery.fn.slicknav) {
+            jQuery('#navigation').slicknav({
+                'prependTo': '.mobile_menu',
+                 'allowParentLinks': true,
+                'closedOnStart': true
+             });
+         }
+         
+         if (applicationForm) {
+            applicationForm.addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                const currentAuthToken = localStorage.getItem('authToken');
+                if (!currentAuthToken) {
+                     alert("You must be logged in to submit an application.");
+                     localStorage.setItem('preLoginRedirect', window.location.href);
+                     window.location.href = 'loginpage.html';
+                    return;
+                 }
+
+                const jobId = localStorage.getItem('selectedJobId'); 
+                 if (!jobId) {
+                    alert("No job selected. Please go back to the job details page.");
+                    return;
+                }
+                document.getElementById('job-id').value = jobId;
+
+                const formData = new FormData(applicationForm);
+
+                try {
+                    const response = await fetch(
+                         'http://127.0.0.1:8000/api/job/applications/create/',
+                             {
+                            method: 'POST',
+                            headers: {
+                                'Authorization': `Token ${currentAuthToken}`
+                            },
+                            body: formData
+                         }
+                     );
+
+                    if (response.ok) {
+                        alert('Application submitted successfully!');
+                         window.location.href = 'myapplications.html';
+                    } else if (response.status === 401 || response.status === 403) {
+                        alert('Submission failed: Invalid or expired token. Please log in again.');
+                        localStorage.removeItem('authToken');
+                        window.location.href = 'loginpage.html';
+                    } else {
+                        const errorData = await response.json();
+                        let errorMessage = 'Submission failed. Server Validation Error:\n';
+                        for (const key in errorData) {
+                            if (Array.isArray(errorData[key])) {
+                            errorMessage += `- ${key}: ${errorData[key].join(', ')}\n`;
+                        } else {
+                            errorMessage += `- ${key}: ${errorData[key]}\n`;
+                        }
+                        }
+                        alert(errorMessage);
+                    }
+                } catch (err) {
+                    console.error('Network error or server not running:', err);
+                    alert('An error occurred during submission. Check server status and network.');
+                }
+            });
+        }
+    });
+
+    const realFile = document.getElementById("real-file");
+    const customButton = document.getElementById("custom-button");
+    const customText = document.getElementById("custom-text");
+    const coverLetterFile = document.getElementById("cover-letter-file");
+    const coverLetterButton = document.getElementById("cover-letter-button");
+    const coverLetterText = document.getElementById("cover-letter-text");
+
+    if (customButton && realFile && customText) {
+        customButton.addEventListener("click", () => {
+            realFile.click();
+        });
+
+        realFile.addEventListener("change", () => {
+            if (realFile.value) {
+                customText.innerHTML = realFile.files[0].name;
+            } else {
+                customText.innerHTML = "No file chosen, yet.";
+            }
+        });
+    }
+
+    if (coverLetterButton && coverLetterFile && coverLetterText) {
+        coverLetterButton.addEventListener("click", () => {
+            coverLetterFile.click();
+        });
+
+        coverLetterFile.addEventListener("change", () => {
+            if (coverLetterFile.value) {
+                coverLetterText.innerHTML = coverLetterFile.files[0].name;
+            } else {
+                coverLetterText.innerHTML = "No file chosen, yet.";
+            }
+        });
+    }
+    </script>
+</body>
+
+</html>
