@@ -1,0 +1,472 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Internship & Job Portal</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/flaticon.css">
+    <link rel="stylesheet" href="assets/css/price_rangs.css">
+    <link rel="stylesheet" href="assets/css/slicknav.css">
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/themify-icons.css">
+    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .slicknav_menu { display: none; position: absolute; right: 0; top: 15px; max-width: 280px; z-index: 1000; margin-right: 15px; }
+        @media (max-width: 991px) { .slicknav_menu { display: block; } }
+        .slicknav_nav { margin-top: -30px; width: 100%; }
+        .slicknav_btn { float: right; margin: 0; }
+        .our-services .col-xl-3 a { display: block; text-decoration: none; color: inherit; }
+        .single-services:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .single-services { transition: all 0.3s ease; }
+    </style>
+</head>
+<body>
+<div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+            <div class="preloader-circle"></div>
+            <div class="preloader-img pere-text">
+                <img src="assets/img/logo/logo22.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<header>
+    <div class="header-area header-transparrent">
+        <div class="header-top header-sticky">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-3 col-md-2">
+                        <div class="logo">
+                            <a href="index.html"><img src="assets/img/logo/logo22.png" alt="Internship & Job Portal Logo"></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 col-md-9">
+                        <div class="menu-wrapper">
+                            <div class="main-menu">
+                                <nav class="d-none d-lg-block">
+                                    <ul id="navigation">
+                                        <li><a href="index.html">Home</a></li>
+                                        <li><a href="job_listing.html">Find Jobs</a></li>
+                                        <li><a href="contact.html">Contact</a></li>
+                                        <li id="nav-studentprofile"><a href="studentprofile.html">My Profile</a></li>
+                                        <li id="nav-myapplications"><a href="myapplications.html">My Applications</a></li>
+                                        <li id="nav-employeradmin"><a href="employeradminpage.html">Employer Admin</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="header-btn d-none d-lg-block"></div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="mobile_menu d-block d-lg-none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div class="container p-0">
+        <h1 class="h3 mb-3">Profile Settings</h1>
+        <div class="row">
+            <div class="col-md-5 col-xl-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Profile Settings</h5>
+                    </div>
+                    <div class="list-group list-group-flush" role="tablist">
+                        <a class="list-group-item list-group-item-action active" data-bs-toggle="list" href="#account" role="tab">Account</a>
+                        <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#password" role="tab">Password</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-7 col-xl-8">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="account" role="tabpanel">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Public info</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="profileForm">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="mb-3">
+                                                <label for="inputUsername" class="form-label">Username</label>
+                                                <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="inputBio" class="form-label">Biography</label>
+                                                <textarea rows="2" class="form-control" id="inputBio" placeholder="Tell something about yourself"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 text-center">
+                                            <!-- Main profile picture (this will update) -->
+                                            <img id="profilePictureDisplay" 
+                                                alt="Profile Picture" 
+                                                src="https://bootdey.com/img/Content/avatar/avatar1.png" 
+                                                class="rounded-circle img-responsive mt-2" 
+                                                width="128" 
+                                                height="128">
+                                            
+                                            <div class="form-group mt-3">
+                                                <label for="inputProfilePicture" class="btn btn-primary">
+                                                    <i class="fa fa-upload"></i> Choose Photo
+                                                </label>
+                                                <input type="file" 
+                                                    class="form-control" 
+                                                    id="inputProfilePicture" 
+                                                    accept="image/*" 
+                                                    style="display: none;">
+                                            </div>
+                                            
+                                            <small class="text-muted">For best results, use an image at least 128px by 128px in .jpg format</small>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mt-3">Save changes</button>
+
+                            </div>
+                        </div>
+
+                        <div class="card mt-3">
+                            <div class="card-header">
+                                <h5 class="card-title mb-0">Private info</h5>
+                            </div>
+                            <div class="card-body">
+
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="inputFirstName" class="form-label">First name</label>
+                                            <input type="text" class="form-control" id="inputFirstName" placeholder="First name">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="inputLastName" class="form-label">Last name</label>
+                                            <input type="text" class="form-control" id="inputLastName" placeholder="Last name">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="inputEmail4" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="inputAddress" class="form-label">Address</label>
+                                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="inputAddress2" class="form-label">Address 2</label>
+                                        <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="inputCity" class="form-label">City</label>
+                                            <input type="text" class="form-control" id="inputCity">
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <label for="inputProvince" class="form-label">Province</label>
+                                            <input type="text" class="form-control" id="inputProvince">
+                                        </div>
+                                        <div class="col-md-2 mb-3">
+                                            <label for="inputZip" class="form-label">Zip</label>
+                                            <input type="text" class="form-control" id="inputZip">
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="password" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Password</h5>
+                                <form id="passwordChangeForm">
+                                    <div class="mb-3">
+                                        <label for="inputPasswordCurrent" class="form-label">Current password</label>
+                                        <input type="password" class="form-control" id="inputPasswordCurrent">
+                                        <small><a href="passwordreset.html">Forgot your password?</a></small>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="inputPasswordNew" class="form-label">New password</label>
+                                        <input type="password" class="form-control" id="inputPasswordNew">
+                                        <!-- ADD THIS: -->
+                                        <small class="form-text text-muted">
+                                            Password must:
+                                            <ul class="mb-0 mt-1" style="font-size: 0.875rem;">
+                                                <li>Be at least 8 characters long</li>
+                                                <li>Not be too common (e.g., "password123")</li>
+                                                <li>Not be entirely numeric</li>
+                                                <li>Not be too similar to your personal information</li>
+                                            </ul>
+                                        </small>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="inputPasswordNew2" class="form-label">Verify password</label>
+                                        <input type="password" class="form-control" id="inputPasswordNew2">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer></footer>
+
+<script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="assets/js/popper.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.slicknav.min.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script>
+<script src="assets/js/slick.min.js"></script>
+<script src="assets/js/price_rangs.js"></script>
+<script src="assets/js/wow.min.js"></script>
+<script src="assets/js/animated.headline.js"></script>
+<script src="assets/js/jquery.magnific-popup.js"></script>
+<script src="assets/js/jquery.scrollUp.min.js"></script>
+<script src="assets/js/jquery.nice-select.min.js"></script>
+<script src="assets/js/jquery.sticky.js"></script>
+<script src="assets/js/contact.js"></script>
+<script src="assets/js/jquery.form.js"></script>
+<script src="assets/js/jquery.validate.min.js"></script>
+<script src="assets/js/mail-script.js"></script>
+<script src="assets/js/jquery.ajaxchimp.min.js"></script>
+<script src="assets/js/plugins.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    const token = localStorage.getItem("authToken");
+    const userRole = localStorage.getItem("userType");
+    const username = localStorage.getItem("username") || "My Account";
+    const headerBtnContainer = document.querySelector(".header-btn");
+
+
+    if (headerBtnContainer) {
+        if (token) {
+            headerBtnContainer.innerHTML = `
+                <a href="studentprofile.html" class="btn head-btn1">${username}</a>
+                <a href="#" id="logoutBtn" class="btn head-btn2">Logout</a>
+            `;
+            document.getElementById("logoutBtn")?.addEventListener("click", e => {
+                e.preventDefault();
+                localStorage.clear();
+                window.location.href = "loginpage.html";
+            });
+        } else {
+            headerBtnContainer.innerHTML = `
+                <a href="loginpage.html" class="btn head-btn1">Login</a>
+                <a href="registerpage.html" class="btn head-btn2">Register</a>
+            `;
+        }
+        headerBtnContainer.classList.remove("d-none");
+    }
+
+
+
+    if (!token) {
+        window.location.href = "loginpage.html";
+        return;
+    }
+
+    if (userRole !== "student") {
+        alert("You must be logged in as a Student to view this page.");
+        window.location.href = "loginpage.html";
+        return;
+    }
+
+    document.getElementById("nav-employeradmin")?.style.setProperty("display","none");
+
+    // Function to load profile data
+    async function loadProfileData() {
+        try {
+            const res = await fetch("http://127.0.0.1:8000/api/users/me/", {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Token ${token}`
+                }
+            });
+            if (!res.ok) throw new Error(res.status);
+            const data = await res.json();
+
+
+            console.log("API Response:", data);  // ADD THIS
+            console.log("Student profile:", data.student_profile);  // ADD THIS
+
+
+            // Populate user fields
+            document.getElementById("inputUsername").value = data.username || "";
+            document.getElementById("inputFirstName").value = data.first_name || "";
+            document.getElementById("inputLastName").value = data.last_name || "";
+            document.getElementById("inputEmail4").value = data.email || "";
+
+            // Populate student fields if they exist
+            if (data.student_profile) {
+                const student = data.student_profile;
+
+                console.log("Bio element:", document.getElementById('inputBio'));
+                console.log("Address element:", document.getElementById('inputAddress'));
+                
+                document.getElementById('inputBio').value = student.bio || '';
+                document.getElementById('inputAddress').value = student.address || '';
+                document.getElementById('inputCity').value = student.city || '';
+                document.getElementById('inputProvince').value = student.province || '';
+                document.getElementById('inputZip').value = student.zip || '';
+
+                // Load profile picture if exists
+                if (student.profile_picture) {
+                    document.getElementById('profilePictureDisplay').src = student.profile_picture;
+                }
+            }
+        } catch (err) {
+            console.error("Error fetching profile:", err);
+            alert("Error connecting to server. Please try again later.");
+        }
+    }
+
+    // Load profile data immediately
+    await loadProfileData();
+
+    // Form submit handler
+    document.getElementById("profileForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const payload = {
+            username: document.getElementById("inputUsername").value.trim(),
+            first_name: document.getElementById("inputFirstName").value.trim(),
+            last_name: document.getElementById("inputLastName").value.trim(),
+            email: document.getElementById("inputEmail4").value.trim(),
+            bio: document.getElementById("inputBio").value.trim(),
+            address: document.getElementById("inputAddress").value.trim(),
+            city: document.getElementById("inputCity").value.trim(),
+            province: document.getElementById("inputProvince").value.trim(),
+            zip: document.getElementById("inputZip").value.trim()
+        };
+        
+        try {
+            const res = await fetch("http://127.0.0.1:8000/api/users/me/", {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Token ${token}`
+                },
+                body: JSON.stringify(payload)
+            });
+            if (!res.ok) throw new Error(res.status);
+            alert("Profile updated successfully!");
+            await loadProfileData();
+        } catch (err) {
+            console.error("Error updating profile:", err);
+            alert("Failed to update profile. Check console for details.");
+        }
+    });
+
+    // Profile picture upload handler
+    document.getElementById('inputProfilePicture').addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        
+        // Show preview immediately
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            document.getElementById('profilePictureDisplay').src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+        
+        // Upload to server
+        const formData = new FormData();
+        formData.append('profile_picture', file);
+        
+        try {
+            const res = await fetch('http://127.0.0.1:8000/api/users/upload-profile-picture/', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Token ${token}`
+                },
+                body: formData
+            });
+            
+            if (!res.ok) throw new Error('Upload failed');
+            
+            const data = await res.json();
+            alert('Profile picture uploaded successfully!');
+            document.getElementById('profilePictureDisplay').src = data.profile_picture;
+            
+        } catch (err) {
+            console.error('Error uploading profile picture:', err);
+            alert('Failed to upload profile picture');
+            await loadProfileData();
+        }
+    });
+
+    // Password change handler
+    const passwordForm = document.getElementById("passwordChangeForm");
+    if (passwordForm) {
+        passwordForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const old_password = document.getElementById("inputPasswordCurrent").value;
+            const new_password = document.getElementById("inputPasswordNew").value;
+            const verify_password = document.getElementById("inputPasswordNew2").value;
+
+            if (new_password !== verify_password) { 
+                alert("New password and verify password do not match!"); 
+                return; 
+            }
+            if (!old_password || !new_password) { 
+                alert("Please fill in both current and new password fields."); 
+                return; 
+            }
+
+            try {
+                const res = await fetch("http://127.0.0.1:8000/api/users/reset-password/", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Token ${token}`
+                    },
+                    body: JSON.stringify({ 
+                        old_password: old_password,
+                        new_password: new_password 
+                    })
+                });
+                if (res.ok) {
+                    alert("Password changed successfully!");
+                    document.getElementById("inputPasswordCurrent").value = "";
+                    document.getElementById("inputPasswordNew").value = "";
+                    document.getElementById("inputPasswordNew2").value = "";
+                } else {
+                    const errData = await res.json();
+                    let msg = errData.detail || "Failed to change password.";
+                    alert("Error: " + msg);
+                    console.error("Full error:", errData);  
+                    alert("Error: " + JSON.stringify(errData)); 
+                }
+            } catch (err) {
+                console.error("Error connecting to server for password change:", err);
+                alert("Error connecting to server. Please try again later.");
+            }
+        });
+    }
+
+
+});
+</script>
+</body>
+</html>

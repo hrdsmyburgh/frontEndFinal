@@ -1,0 +1,296 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Internship & Job Portal</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="manifest" href="site.webmanifest">
+<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+<link rel="stylesheet" href="assets/css/flaticon.css">
+<link rel="stylesheet" href="assets/css/price_rangs.css">
+<link rel="stylesheet" href="assets/css/slicknav.css">
+<link rel="stylesheet" href="assets/css/animate.min.css">
+<link rel="stylesheet" href="assets/css/magnific-popup.css">
+<link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+<link rel="stylesheet" href="assets/css/themify-icons.css">
+<link rel="stylesheet" href="assets/css/slick.css">
+<link rel="stylesheet" href="assets/css/nice-select.css">
+<link rel="stylesheet" href="assets/css/style.css">
+
+<style>
+.slicknav_menu { 
+    display: none; 
+    position: absolute; 
+    right: 0;
+    top: 15px; 
+    max-width: 280px; 
+    z-index: 1000; 
+    float: right; 
+    margin-right: 15px; 
+}
+@media (max-width: 991px) {
+    .slicknav_menu { display: block; }
+}
+.slicknav_nav { margin-top: -30px; width: 100%; }
+.slicknav_btn { float: right; margin: 0; }
+.our-services .col-xl-3 a { display: block; text-decoration: none; color: inherit; }
+.single-services:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+.single-services { transition: all 0.3s ease; }
+</style>
+</head>
+<body>
+<div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+            <div class="preloader-circle"></div>
+            <div class="preloader-img pere-text">
+                <img src="assets/img/logo/logo22.png" alt="Logo">
+            </div>
+        </div>
+    </div>
+</div>
+
+<header>
+<div class="header-area header-transparrent">
+<div class="header-top header-sticky">
+<div class="container">
+<div class="row align-items-center">
+<div class="col-lg-3 col-md-2">
+<div class="logo">
+<a href="index.html"><img src="assets/img/logo/logo22.png" alt="Internship & Job Portal Logo"></a>
+</div> 
+</div>
+<div class="col-lg-9 col-md-9">
+<div class="menu-wrapper">
+<div class="main-menu">
+<nav class="d-none d-lg-block">
+<ul id="navigation">
+<li><a href="index.html">Home</a></li>
+<li><a href="job_listing.html">Find Jobs</a></li>
+<li><a href="contact.html">Contact</a></li>
+<li id="nav-studentprofile"><a href="studentprofile.html">My Profile</a></li>
+<li id="nav-myapplications"><a href="myapplications.html">My Applications</a></li>
+<li id="nav-employeradmin"><a href="employeradminpage.html">Employer Admin</a></li> 
+</ul>
+</nav>
+</div> 		
+<div class="header-btn d-none f-right d-lg-block">
+<a href="#" class="btn head-btn1" id="logoutBtn">Logout</a>
+</div>
+</div>
+</div>
+<div class="col-12">
+<div class="mobile_menu d-block d-lg-none"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</header>
+
+<main>
+<section id="sidebar">
+<a href="employeradminpage.html" class="brand">
+<i class='bx bxs-briefcase'></i>
+<span class="text">Employer Console</span>
+</a>
+<ul class="side-menu top">
+<li id="nav-applications" class="active">
+<a href="#" data-target-url="application-reviews">
+<i class='bx bxs-dashboard'></i>
+<span class="text">Application Reviews</span>
+</a>
+</li>
+<li id="nav-jobpost">
+<a href="#" data-target-url="employerjobposting.html">
+<i class='bx bxs-add-to-queue'></i>
+<span class="text">Add New Job Post</span>
+</a>
+</li>
+</ul>
+</section>
+
+<section id="content">
+<div id="dynamic-content-area">
+<main>
+<ul class="box-info">
+<li>
+<i class='bx bxs-group'></i>
+<span class="text">
+<h3 id="applicationsCount">5</h3>
+<p>Total Applications</p>
+</span>
+</li>
+</ul>
+
+<div class="table-data">
+<div class="order">
+<div class="head">
+<h3>Recent Applications</h3>
+<i class='bx bx-filter' id="filterIcon"></i>
+</div>
+
+<div id="filterForm" class="filter-form">
+<input type="text" id="filterStatus" placeholder="Filter by Status">
+<input type="text" id="filterJob" placeholder="Filter by Job Applied">
+<button id="applyFilterBtn">Apply Filter</button>
+</div>
+
+<div class="actions">
+<select id="actionDropdown" class="action-dropdown">
+<option value="" disabled selected>Select Action</option>
+<option value="accept">Accept</option>
+<option value="reject">Reject</option>
+</select>
+<button class="apply-action-btn">Apply</button>
+</div>
+
+<table>
+<thead>
+<tr>
+<th><input type="checkbox" id="selectAll"></th>
+<th>Applicant Name</th>
+<th>Job Applied</th>
+<th>Status</th>
+<th>CV</th>
+</tr>
+</thead>
+<tbody>
+<tr data-job="Internship" data-status="In progress">
+<td>
+<div class="fs-checkbox-wrapper">
+<input aria-describedby="select-applicant" class="fs-checkbox"
+name="select-applicant" type="checkbox" value="select-applicant" />
+</div>
+</td>
+<td><p>John Doe</p></td>
+<td>Internship</td>
+<td><span class="status completed">In progress</span></td>
+<td><a href="assets/img/cvexample.pdf" style="color: red;" target="_blank">cvname.pdf</a></td>
+</tr>
+<tr data-job="Full-time" data-status="Approved">
+<td>
+<div class="fs-checkbox-wrapper">
+<input aria-describedby="select-applicant" class="fs-checkbox"
+name="select-applicant" type="checkbox" value="select-applicant" />
+</div>
+</td>
+<td><p>Jane Smith</p></td>
+<td>Full-time</td>
+<td><span class="status completed">Approved</span></td>
+<td><a href="assets/img/cvexample.pdf" style="color: red;" target="_blank">cvname.pdf</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+</div>
+</section>
+</main>
+
+<script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
+<script src="./assets/js/popper.min.js"></script>
+<script src="./assets/js/bootstrap.min.js"></script>
+<script src="./assets/js/jquery.slicknav.min.js"></script>
+<script src="./assets/js/owl.carousel.min.js"></script>
+<script src="./assets/js/slick.min.js"></script>
+<script src="./assets/js/price_rangs.js"></script>
+<script src="./assets/js/wow.min.js"></script>
+<script src="./assets/js/animated.headline.js"></script>
+<script src="./assets/js/jquery.magnific-popup.js"></script>
+<script src="./assets/js/jquery.scrollUp.min.js"></script>
+<script src="./assets/js/jquery.nice-select.min.js"></script>
+<script src="./assets/js/jquery.sticky.js"></script>
+<script src="./assets/js/contact.js"></script>
+<script src="./assets/js/jquery.form.js"></script>
+<script src="./assets/js/jquery.validate.min.js"></script>
+<script src="./assets/js/mail-script.js"></script>
+<script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+<script src="./assets/js/plugins.js"></script>
+<script src="./assets/js/main.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', async function() {
+    const token = localStorage.getItem('authToken');
+    let userRole = localStorage.getItem('userType') || '';
+    userRole = userRole.toLowerCase();
+
+    const username = localStorage.getItem('username') || 'My Account';
+
+    // --- HEADER ---
+    const headerBtnContainer = document.querySelector('.header-btn');
+    if (headerBtnContainer) {
+        headerBtnContainer.innerHTML = `
+            <a href="studentprofile.html" class="btn head-btn1">${username}</a>
+            <a href="#" id="logoutBtn" class="btn head-btn2">Logout</a>
+        `;
+        const logoutBtn = document.getElementById('logoutBtn');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                localStorage.clear();
+                window.location.href = 'loginpage.html';
+            });
+        }
+    }
+
+    // Hide employer admin link
+    const navEmployer = document.getElementById('nav-employeradmin');
+    if (navEmployer) navEmployer.style.display = 'none';
+
+    // Hide student links not relevant if needed
+    // const navMyApplications = document.getElementById('nav-myapplications');
+    // if (navMyApplications) navMyApplications.style.display = 'block';
+
+    // --- ACCESS CHECK ---
+    if (!token || userRole !== 'student') {
+        alert("You must be logged in as a Student to view this page.");
+        window.location.href = 'loginpage.html';
+        return;
+    }
+
+    // --- FETCH PROFILE ---
+    try {
+        const res = await fetch('http://127.0.0.1:8000/api/users/profile/', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Token ${token}`
+            }
+        });
+
+        if (!res.ok) {
+            console.error("Failed to fetch profile:", res.status);
+            alert("Failed to load profile. Please login again.");
+            localStorage.clear();
+            window.location.href = 'loginpage.html';
+            return;
+        }
+
+        const data = await res.json();
+
+        // Populate form
+        document.getElementById('inputUsername').value = data.username || '';
+        document.getElementById('inputFirstName').value = data.first_name || '';
+        document.getElementById('inputLastName').value = data.last_name || '';
+        document.getElementById('inputEmail4').value = data.email || '';
+        document.getElementById('inputBio').value = data.bio || '';
+        document.getElementById('inputAddress').value = data.address || '';
+        document.getElementById('inputAddress2').value = data.address2 || '';
+        document.getElementById('inputCity').value = data.city || '';
+        document.getElementById('inputProvince').value = data.province || '';
+        document.getElementById('inputZip').value = data.zip || '';
+    } catch(err) {
+        console.error("Error fetching profile:", err);
+        alert("Error connecting to server. Please try again later.");
+    }
+});
+</script>
+</body>
+</html>
