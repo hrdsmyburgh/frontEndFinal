@@ -141,7 +141,7 @@
                     <h2 class="contact-title">Get in Touch</h2>
                 </div>
                 <div class="col-lg-8">
-                    <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm"
+                    <form class="form-contact contact_form" id="contactForm"
                         novalidate="novalidate">
                         <div class="row">
                             <div class="col-sm-6">
@@ -174,7 +174,7 @@
                             </div>
                         </div>
                         <div class="form-group mt-3">
-                            <button type="submit" class="button button-contactForm boxed-btn">Send</button>
+                            <button type="button" class="button button-contactForm boxed-btn" onclick="sendEmail()">Send</button>
                         </div>
                     </form>
                 </div>
@@ -338,6 +338,18 @@
             });
     }
 
+    function sendEmail() {
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+
+        const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+        const mailtoUrl = `mailto:support@company.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        window.location.href = mailtoUrl;
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
         fetchAndDisplayJobCounts();
         const token = localStorage.getItem("authToken");
@@ -345,10 +357,9 @@
         const userType = localStorage.getItem('userType');
         const myAppLink = document.getElementById('nav-myapplications');
         const empAdminLink = document.getElementById('nav-employeradmin');
-
+        const myProfileLink = document.querySelector('a[href="studentprofile.html"]');
 
         const headerBtnContainer = document.querySelector(".header-btn");
-
 
         if (headerBtnContainer) {
             if (token) {
@@ -370,21 +381,44 @@
             headerBtnContainer.classList.remove("d-none");
         }
 
-
         const myAppLi = myAppLink ? myAppLink.closest('li') : null;
         const empAdminLi = empAdminLink ? empAdminLink.closest('li') : null;
 
         if (myAppLi && empAdminLi) {
             if (userType === 'employer') {
                 myAppLi.style.display = 'none';
-                empAdminLi.style.display = 'block'; 
-            } else if (userType === 'student') { 
+                empAdminLi.style.display = 'block';
+            } else if (userType === 'student') {
                 empAdminLi.style.display = 'none';
                 myAppLi.style.display = 'block';
             } else {
                 myAppLi.style.display = 'none';
                 empAdminLi.style.display = 'none';
             }
+        }
+
+        // Add click handlers for protected links
+        if (empAdminLink) {
+            empAdminLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = "loginpage.html";
+            });
+        }
+        if (myAppLink) {
+            myAppLink.addEventListener('click', function(e) {
+                if (!token) {
+                    e.preventDefault();
+                    window.location.href = "loginpage.html";
+                }
+            });
+        }
+        if (myProfileLink) {
+            myProfileLink.addEventListener('click', function(e) {
+                if (!token) {
+                    e.preventDefault();
+                    window.location.href = "loginpage.html";
+                }
+            });
         }
     });
 </script>
