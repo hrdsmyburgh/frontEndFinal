@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
 // JQuery/Theme Initialization Logic (Keeping existing functionality)
 (function ($) {
     "use strict"
@@ -13,23 +9,6 @@
     });
 
     // 2. Mobile Menu (Slicknav)
-<<<<<<< HEAD
-=======
-=======
-(function ($) {
-    "use strict"
-
-    /* 1. Proloder */
-    $(window).on('load', function () {
-        $('#preloader-active').delay(450).fadeOut('slow');
-        $('body').delay(450).css({
-            'overflow': 'visible'
-        });
-    });
-
-    /* 2. slick Nav */
->>>>>>> d24f53188c3f36ad974eb7899e1f091d247532bd
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
     var menu = $('ul#navigation');
     if (menu.length) {
         menu.slicknav({
@@ -39,15 +18,7 @@
         });
     };
 
-<<<<<<< HEAD
     // 3. Main Slider (Slick)
-=======
-<<<<<<< HEAD
-    // 3. Main Slider (Slick)
-=======
-    /* 3. MainSlider-1 */
->>>>>>> d24f53188c3f36ad974eb7899e1f091d247532bd
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
     function mainSlider() {
         var BasicSlider = $('.slider-active');
         BasicSlider.on('init', function (e, slick) {
@@ -111,15 +82,7 @@
     }
     mainSlider();
 
-<<<<<<< HEAD
     // 4. Testimonial Slider (Slick)
-=======
-<<<<<<< HEAD
-    // 4. Testimonial Slider (Slick)
-=======
-    /* 4. Testimonial Active*/
->>>>>>> d24f53188c3f36ad974eb7899e1f091d247532bd
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
     var testimonial = $('.h1-testimonial-active');
     if (testimonial.length) {
         testimonial.slick({
@@ -161,10 +124,6 @@
         });
     }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
     // 5. Completed Jobs Carousel (Owl Carousel)
     var client_list = $('.completed-active');
     if (client_list.length) {
@@ -174,78 +133,27 @@
             loop: true,
             autoplay: true,
             autoplayTimeout: 3000,
-<<<<<<< HEAD
-=======
-=======
-    /* 5. Gallery Active */
-    var client_list = $('.completed-active');
-    if (client_list.length) {
-        client_list.owlCarousel({
-            slidesToShow: 2,
-            slidesToScroll: 1,
-            loop: true,
-            autoplay: true,
-            speed: 3000,
->>>>>>> d24f53188c3f36ad974eb7899e1f091d247532bd
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
             smartSpeed: 2000,
             nav: false,
             dots: false,
             margin: 15,
             autoplayHoverPause: true,
             responsive: {
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
                 0: { items: 1 },
                 768: { items: 2 },
                 992: { items: 2 },
                 1200: { items: 3 }
-<<<<<<< HEAD
-=======
-=======
-                0: {
-                    items: 1
-                },
-                768: {
-                    items: 2
-                },
-                992: {
-                    items: 2
-                },
-                1200: {
-                    items: 3
-                }
->>>>>>> d24f53188c3f36ad974eb7899e1f091d247532bd
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
             }
         });
     }
 
-<<<<<<< HEAD
     // 6. Nice Select Dropdowns
-=======
-<<<<<<< HEAD
-    // 6. Nice Select Dropdowns
-=======
-    /* 6. Nice Select */
->>>>>>> d24f53188c3f36ad974eb7899e1f091d247532bd
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
     var nice_Select = $('select');
     if (nice_Select.length) {
         nice_Select.niceSelect();
     }
 
-<<<<<<< HEAD
     // 7. Sticky Header
-=======
-<<<<<<< HEAD
-    // 7. Sticky Header
-=======
-    /* 7.  Custom Sticky Menu  */
->>>>>>> d24f53188c3f36ad974eb7899e1f091d247532bd
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
     $(window).on('scroll', function () {
         var scroll = $(window).scrollTop();
         if (scroll < 245) {
@@ -257,15 +165,7 @@
         }
     });
 
-<<<<<<< HEAD
     // 8. Scroll Up
-=======
-<<<<<<< HEAD
-    // 8. Scroll Up
-=======
-    /* 8. scrollUp */
->>>>>>> d24f53188c3f36ad974eb7899e1f091d247532bd
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
     $.scrollUp({
         scrollName: 'scrollUp',
         topDistance: '300',
@@ -277,50 +177,21 @@
         activeOverlay: false,
     });
 
-<<<<<<< HEAD
     // 9. Data Background Handling
-=======
-<<<<<<< HEAD
-    // 9. Data Background Handling
-=======
-    /* 9. data-background */
->>>>>>> d24f53188c3f36ad974eb7899e1f091d247532bd
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
     $("[data-background]").each(function () {
         $(this).css("background-image", "url(" + $(this).attr("data-background") + ")")
     });
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
     // 10. WOW.js for animations
     new WOW().init();
 
     // 11. MailChimp Integration (AjaxChimp)
-<<<<<<< HEAD
-=======
-=======
-    /* 10. WOW active */
-    new WOW().init();
-
-    /* 11. Mailchimp */
->>>>>>> d24f53188c3f36ad974eb7899e1f091d247532bd
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
     function mailChimp() {
         $('#mc_embed_signup').find('form').ajaxChimp();
     }
     mailChimp();
 
-<<<<<<< HEAD
     // 12. Magnific Popup (Image Gallery)
-=======
-<<<<<<< HEAD
-    // 12. Magnific Popup (Image Gallery)
-=======
-    /* 12. Pop Up Img */
->>>>>>> d24f53188c3f36ad974eb7899e1f091d247532bd
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
     var popUp = $('.single_gallery_part, .img-pop-up');
     if (popUp.length) {
         popUp.magnificPopup({
@@ -331,10 +202,6 @@
 
 })(jQuery);
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
 
 // =======================================================================
 // VANILLA JAVASCRIPT & FIREBASE AUTH INTEGRATION (REPLACING MOCK AUTH)
@@ -431,17 +298,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // --- UI/FORM LOGIC ---
 
     // File Input Custom Buttons (Resume & Cover Letter)
-<<<<<<< HEAD
-=======
-=======
-// =======================================================
-// DOMContentLoaded wrapper for API & Dashboard logic
-// =======================================================
-document.addEventListener('DOMContentLoaded', (event) => {
-
-    // ---------- FILE UPLOAD ----------
->>>>>>> d24f53188c3f36ad974eb7899e1f091d247532bd
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
     const realFileBtn = document.getElementById("real-file");
     const customBtn = document.getElementById("custom-button");
     const customTxt = document.getElementById("custom-text");
@@ -450,10 +306,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         if(customTxt) customTxt.innerHTML = realFileBtn.value ? realFileBtn.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1] : "No file chosen, yet.";
     });
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
     const coverLetterFileBtn = document.getElementById("cover-letter-file");
     const coverLetterBtn = document.getElementById("cover-letter-button");
     const coverLetterTxt = document.getElementById("cover-letter-text");
@@ -467,27 +319,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 
     // Sidebar/Dashboard UI Logic (Truncated for brevity, functions remain same as original)
-<<<<<<< HEAD
-=======
-=======
-    // ---------- PASSWORD TOGGLE ----------
-    function togglePassword() {
-        const passwordInput = document.getElementById("password");
-        const eyeIcon = document.querySelector(".eye-icon");
-        if(passwordInput && eyeIcon){
-            if(passwordInput.type === "password") {
-                passwordInput.type = "text";
-                eyeIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-off-icon lucide-eye-off"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/><path d="m2 2 20 20"/></svg>`;
-            } else {
-                passwordInput.type = "password";
-                eyeIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>`;
-            }
-        }
-    }
-
-    // ---------- SIDEBAR MENU ACTIVE LINKS ----------
->>>>>>> d24f53188c3f36ad974eb7899e1f091d247532bd
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
     const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
     allSideMenu.forEach(item => {
         const li = item.parentElement;
@@ -497,78 +328,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     });
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-    // ---------- TOGGLE SIDEBAR ----------
->>>>>>> d24f53188c3f36ad974eb7899e1f091d247532bd
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
     const menuBar = document.querySelector('#content nav .bx.bx-menu');
     const sidebar = document.getElementById('sidebar');
     if(menuBar) menuBar.addEventListener('click', () => { if(sidebar) sidebar.classList.toggle('hide'); });
 
-<<<<<<< HEAD
     // ... (omitting remaining original UI/Dashboard logic for brevity, assuming it works)
 
     // Password Match Check
-=======
-<<<<<<< HEAD
-    // ... (omitting remaining original UI/Dashboard logic for brevity, assuming it works)
-
-    // Password Match Check
-=======
-    // ---------- SEARCH FORM TOGGLE ----------
-    const searchButton = document.querySelector('#content nav form .form-input button');
-    const searchButtonIcon = document.querySelector('#content nav form .form-input button .bx');
-    const searchForm = document.querySelector('#content nav form');
-    if(searchButton) searchButton.addEventListener('click', (e) => {
-        if(window.innerWidth < 576) {
-            e.preventDefault();
-            searchForm.classList.toggle('show');
-            if(searchForm.classList.contains('show')) searchButtonIcon.classList.replace('bx-search','bx-x');
-            else searchButtonIcon.classList.replace('bx-x','bx-search');
-        }
-    });
-
-    // ---------- WINDOW RESIZE ----------
-    if(sidebar){
-        if(window.innerWidth<768) sidebar.classList.add('hide');
-        else if(window.innerWidth>576){
-            if(searchButtonIcon) searchButtonIcon.classList.replace('bx-x','bx-search');
-            if(searchForm) searchForm.classList.remove('show');
-        }
-    }
-    window.addEventListener('resize', function(){
-        if(this.innerWidth>576){
-            if(searchButtonIcon) searchButtonIcon.classList.replace('bx-x','bx-search');
-            if(searchForm) searchForm.classList.remove('show');
-        }
-    });
-
-    // ---------- DARK MODE ----------
-    const switchMode = document.getElementById('switch-mode');
-    if(switchMode) switchMode.addEventListener('change', function(){
-        if(this.checked) document.body.classList.add('dark');
-        else document.body.classList.remove('dark');
-    });
-
-    // ---------- SHOW/HIDE PASSWORD ----------
-    document.getElementById("showPassword")?.addEventListener("change", function(){
-        const password = document.getElementById("password");
-        const confirmPassword = document.getElementById("confirm_password");
-        if(this.checked){
-            if(password) password.type="text";
-            if(confirmPassword) confirmPassword.type="text";
-        } else {
-            if(password) password.type="password";
-            if(confirmPassword) confirmPassword.type="password";
-        }
-    });
-
-    // ---------- CHECK PASSWORD MATCH ----------
->>>>>>> d24f53188c3f36ad974eb7899e1f091d247532bd
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
     const password = document.getElementById("password");
     const confirmPassword = document.getElementById("confirm_password");
     const message = document.getElementById("message");
@@ -580,27 +346,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
     if(password) password.addEventListener("keyup", checkPasswords);
     if(confirmPassword) confirmPassword.addEventListener("keyup", checkPasswords);
-<<<<<<< HEAD
     
     // Dashboard Select All Checkbox
-=======
-<<<<<<< HEAD
-    
-    // Dashboard Select All Checkbox
-=======
-
-    // ---------- SELECT ALL APPLICANTS ----------
->>>>>>> d24f53188c3f36ad974eb7899e1f091d247532bd
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
     document.getElementById('selectAll')?.addEventListener('change', function(){
         const checkboxes=document.querySelectorAll('.applicant-checkbox');
         checkboxes.forEach(cb=>cb.checked=this.checked);
     });
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
     // Dashboard Apply Action Button (using console.log instead of alert)
     document.querySelector('.apply-action-btn')?.addEventListener('click', function(){
         const selectedAction=document.getElementById('actionDropdown').value;
@@ -611,34 +363,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
     
     // Dashboard Filter Icon Toggle
-<<<<<<< HEAD
-=======
-=======
-    // ---------- APPLY ACTION BUTTON ----------
-    document.querySelector('.apply-action-btn')?.addEventListener('click', function(){
-        const selectedAction=document.getElementById('actionDropdown').value;
-        const selectedApplicants=Array.from(document.querySelectorAll('.applicant-checkbox:checked'));
-        if(!selectedAction){ alert('Please select an action.'); return; }
-        if(selectedApplicants.length===0){ alert('Please select at least one applicant.'); return; }
-        alert(`${selectedAction} action applied to ${selectedApplicants.length} applicants.`);
-    });
-
-    // ---------- DASHBOARD FILTER ----------
->>>>>>> d24f53188c3f36ad974eb7899e1f091d247532bd
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
     document.getElementById('filterIcon')?.addEventListener('click', ()=>{
         const filterForm=document.getElementById('filterForm');
         if(filterForm) filterForm.style.display=filterForm.style.display==='none'?'flex':'none';
     });
 
-<<<<<<< HEAD
     // Dashboard Apply Filter Button
-=======
-<<<<<<< HEAD
-    // Dashboard Apply Filter Button
-=======
->>>>>>> d24f53188c3f36ad974eb7899e1f091d247532bd
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
     document.getElementById('applyDashboardFilterBtn')?.addEventListener('click', ()=>{
         const filterStatus=document.getElementById('filterStatus')?.value.toLowerCase();
         const filterJob=document.getElementById('filterJob')?.value.toLowerCase();
@@ -651,15 +381,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     });
 
-<<<<<<< HEAD
     // Job Search Page Filter Logic (Salary Range & Job Type)
-=======
-<<<<<<< HEAD
-    // Job Search Page Filter Logic (Salary Range & Job Type)
-=======
-    // ---------- JOB LISTING FILTER ----------
->>>>>>> d24f53188c3f36ad974eb7899e1f091d247532bd
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
     const jobFilterButton = document.getElementById('applyJobFilterBtn');
     if(jobFilterButton){
         jobFilterButton.addEventListener('click', ()=>{
@@ -681,10 +403,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
     // --- FIRESTORE APPLICATION SUBMISSION ---
     const applicationForm = document.getElementById('applicationForm');
     if (applicationForm) {
@@ -749,7 +467,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
         });
     }
-<<<<<<< HEAD
     const loginForm = document.getElementById('studentLoginForm');
 if (loginForm) {
     loginForm.addEventListener('submit', async function (e) {
@@ -791,46 +508,3 @@ if (loginForm) {
     });
 }
 });
-=======
-});
-=======
-    // ---------- FRONTEND API CALLS ----------
-    async function loginUser(email,password){
-        const res=await fetch('/api/users/login/',{
-            method:'POST',
-            headers:{'Content-Type':'application/json'},
-            body:JSON.stringify({email,password})
-        });
-        return res.json();
-    }
-
-    async function registerUser(username,email,password,role){
-        const res=await fetch('/api/users/register/',{
-            method:'POST',
-            headers:{'Content-Type':'application/json'},
-            body:JSON.stringify({username,email,password,role})
-        });
-        return res.json();
-    }
-
-    async function getProfile(){
-        const token=localStorage.getItem('token');
-        const res=await fetch('/api/users/profile/',{
-            method:'GET',
-            headers:{'Authorization':`Bearer ${token}`}
-        });
-        return res.json();
-    }
-
-    async function updateProfile(data){
-        const token=localStorage.getItem('token');
-        const res=await fetch('/api/users/profile/',{
-            method:'PUT',
-            headers:{'Content-Type':'application/json','Authorization':`Bearer ${token}`},
-            body:JSON.stringify(data)
-        });
-        return res.json();
-    }
-});
->>>>>>> d24f53188c3f36ad974eb7899e1f091d247532bd
->>>>>>> 22663f0f8964d43e9189150f7af167c09adfe7f6
