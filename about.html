@@ -140,7 +140,7 @@
                             </div>
                             <div class="support-caption">
                                 <p class="pera-top">We are building a platform that connects students, graduates, and professionals with meaningful career opportunities. Our goal is to make internships and jobs more accessible by bringing applicants and employers together in one simple, transparent, and user-friendly space. Whether you are looking to gain hands-on experience, kick-start your career, or find the right talent for your organization, our portal makes the process faster, smarter, and easier for everyone.</p>
-                                <a href="about.html" class="btn post-btn">Post a job</a>
+                                <a href="#" id="postJobBtn" class="btn post-btn">Post a job</a>
                             </div>
                         </div>
                     </div>
@@ -406,6 +406,7 @@
             const userType = localStorage.getItem('userType');
             const myAppLink = document.getElementById('nav-myapplications');
             const empAdminLink = document.getElementById('nav-employeradmin');
+            const postJobBtn = document.getElementById('postJobBtn');
 
             const myAppLi = myAppLink ? myAppLink.closest('li') : null;
             const empAdminLi = empAdminLink ? empAdminLink.closest('li') : null;
@@ -413,14 +414,22 @@
             if (myAppLi && empAdminLi) {
                 if (userType === 'employer') {
                     myAppLi.style.display = 'none';
-                    empAdminLi.style.display = 'block'; 
-                } else if (userType === 'student') { 
+                    empAdminLi.style.display = 'block';
+                } else if (userType === 'student') {
                     empAdminLi.style.display = 'none';
                     myAppLi.style.display = 'block';
                 } else {
                     myAppLi.style.display = 'none';
                     empAdminLi.style.display = 'none';
                 }
+            }
+
+            // Add click handler for post job button
+            if (postJobBtn) {
+                postJobBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.location.href = "loginpage.html";
+                });
             }
         });
     </script>
