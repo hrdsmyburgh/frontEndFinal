@@ -162,21 +162,8 @@
 <th>CV</th>
 </tr>
 </thead>
-<tbody>
-<tr data-job="Internship" data-status="In progress">
-<td><input class="fs-checkbox" type="checkbox"></td>
-<td>John Doe</td>
-<td>Internship</td>
-<td><span class="status completed">In progress</span></td>
-<td><a href="assets/img/cvexample.pdf" style="color: red;" target="_blank">cvname.pdf</a></td>
-</tr>
-<tr data-job="Full-time" data-status="Approved">
-<td><input class="fs-checkbox" type="checkbox"></td>
-<td>Jane Smith</td>
-<td>Full-time</td>
-<td><span class="status completed">Approved</span></td>
-<td><a href="assets/img/cvexample.pdf" style="color: red;" target="_blank">cvname.pdf</a></td>
-</tr>
+<tbody id="applicationsTableBody">
+<!-- Applications will be loaded dynamically -->
 </tbody>
 </table>
 </div>
@@ -294,10 +281,258 @@ document.addEventListener('DOMContentLoaded', async function() {
                 alert("Error connecting to server. Please try again later.");
             }
         }
+    }    // EXECUTE FUNCTION
+    await loadProfileData();
+    
+    // Load employer applications
+    await loadEmployerApplications();
+});
+
+// Global variables
+let allApplications = [];
+let filteredApplications = [];
+
+// Load applications for employer's jobs
+async function loadEmployerApplications() {
+    const token = localStorage.getItem('authToken');
+    
+    try {
+        showLoading();
+        
+        const response = await fetch('http://127.0.0.1:8000/api/employer/applications/', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Token ${token}`
+            }
+        });
+
+        if (!response.ok) {
+            if (response.status === 401) {
+                localStorage.clear();
+                window.location.href = "loginpage.html";
+                return;
+            }
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const applications = await response.json();
+        allApplications = applications;
+        filteredApplications = [...applications];
+        
+        displayApplications(filteredApplications);
+        updateApplicationCount(filteredApplications.length);
+        
+    } catch (error) {
+        console.error('Error loading applications:', error);
+        showError('Failed to load applications. Please try again.');
+    } finally {
+        hideLoading();
+    }
+}
+
+// Display applications in the table
+function displayApplications(applications) {
+    const tableBody = document.getElementById('applicationsTableBody');
+    
+    if (applications.length === 0) {
+        tableBody.innerHTML = `
+            <tr>
+                <td colspan="5" style="text-align: center; padding: 20px;">
+                    <p>No applications found.</p>
+                    <a href="employerjobposting.html" class="btn btn-primary">Post a Job</a>
+                </td>
+            </tr>
+        `;
+        return;
     }
 
-    // EXECUTE FUNCTION
-    await loadProfileData();
+    tableBody.innerHTML = applications.map(app => createApplicationRow(app)).join('');
+    
+    // Add event listeners for checkboxes
+    addCheckboxEventListeners();
+}
+
+// Create application row HTML
+function createApplicationRow(application) {
+    const statusClass = getStatusClass(application.status);
+    const statusText = getStatusText(application.status);
+    
+    return `
+        <tr data-application-id="${application.id}">
+            <td><input class="fs-checkbox" type="checkbox" value="${application.id}"></td>
+            <td>${application.applicant_name || application.user?.first_name + ' ' + application.user?.last_name || 'N/A'}</td>
+            <td>${application.job_title || application.job?.title || 'N/A'}</td>
+            <td><span class="status ${statusClass}">${statusText}</span></td>
+            <td>
+                ${application.cv_file ? 
+                    `<a href="${application.cv_file}" style="color: red;" target="_blank">View CV</a>` : 
+                    '<span style="color: gray;">No CV</span>'
+                }
+            </td>
+        </tr>
+    `;
+}
+
+// Get status CSS class
+function getStatusClass(status) {
+    switch(status?.toLowerCase()) {
+        case 'accepted': return 'completed';
+        case 'rejected': return 'process';
+        case 'pending': return 'pending';
+        default: return 'pending';
+    }
+}
+
+// Get status display text
+function getStatusText(status) {
+    switch(status?.toLowerCase()) {
+        case 'accepted': return 'Accepted';
+        case 'rejected': return 'Rejected';
+        case 'pending': return 'Pending';
+        default: return 'Pending';
+    }
+}
+
+// Add event listeners for checkboxes
+function addCheckboxEventListeners() {
+    // Select all checkbox functionality
+    const selectAllCheckbox = document.getElementById('selectAll');
+    const applicationCheckboxes = document.querySelectorAll('.fs-checkbox');
+    
+    if (selectAllCheckbox) {
+        selectAllCheckbox.addEventListener('change', function() {
+            applicationCheckboxes.forEach(checkbox => {
+                checkbox.checked = selectAllCheckbox.checked;
+            });
+        });
+    }
+    
+    // Apply action button functionality
+    const applyActionBtn = document.querySelector('.apply-action-btn');
+    if (applyActionBtn) {
+        applyActionBtn.addEventListener('click', async function() {
+            const action = document.getElementById('actionDropdown').value;
+            const selectedApplications = Array.from(applicationCheckboxes)
+                .filter(checkbox => checkbox.checked)
+                .map(checkbox => checkbox.value);
+            
+            if (selectedApplications.length === 0) {
+                alert('Please select at least one application.');
+                return;
+            }
+            
+            if (!action) {
+                alert('Please select an action.');
+                return;
+            }
+            
+            if (confirm(`Are you sure you want to ${action} the selected applications?`)) {
+                await updateApplicationsStatus(selectedApplications, action);
+            }
+        });
+    }
+}
+
+// Update applications status (accept/reject)
+async function updateApplicationsStatus(applicationIds, status) {
+    const token = localStorage.getItem('authToken');
+    
+    try {
+        const promises = applicationIds.map(id => 
+            fetch(`http://127.0.0.1:8000/api/applications/${id}/status/`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Token ${token}`
+                },
+                body: JSON.stringify({ status: status })
+            })
+        );
+        
+        const responses = await Promise.all(promises);
+        
+        // Check if all requests were successful
+        const allSuccessful = responses.every(response => response.ok);
+        
+        if (allSuccessful) {
+            alert(`Applications ${status}ed successfully.`);
+            // Reload applications
+            await loadEmployerApplications();
+            // Reset form
+            document.getElementById('actionDropdown').value = '';
+            document.getElementById('selectAll').checked = false;
+        } else {
+            throw new Error('Some applications failed to update');
+        }
+        
+    } catch (error) {
+        console.error('Error updating applications:', error);
+        alert('Failed to update applications. Please try again.');
+    }
+}
+
+// Update application count
+function updateApplicationCount(count) {
+    document.getElementById('applicationsCount').textContent = count;
+}
+
+// Show loading state
+function showLoading() {
+    const tableBody = document.getElementById('applicationsTableBody');
+    tableBody.innerHTML = `
+        <tr>
+            <td colspan="5" style="text-align: center; padding: 20px;">
+                <div class="loading-spinner">Loading applications...</div>
+            </td>
+        </tr>
+    `;
+}
+
+// Hide loading state
+function hideLoading() {
+    // Loading is hidden when displayApplications is called
+}
+
+// Show error message
+function showError(message) {
+    const tableBody = document.getElementById('applicationsTableBody');
+    tableBody.innerHTML = `
+        <tr>
+            <td colspan="5" style="text-align: center; padding: 20px;">
+                <p style="color: red;">${message}</p>
+                <button onclick="loadEmployerApplications()" class="btn btn-primary">Retry</button>
+            </td>
+        </tr>
+    `;
+}
+
+// Filter functionality for employer applications
+function applyEmployerFilters() {
+    const jobFilter = document.getElementById('filterJob').value.trim().toLowerCase();
+    const statusFilter = document.getElementById('filterStatus').value.trim().toLowerCase();
+    
+    filteredApplications = allApplications.filter(app => {
+        const jobTitle = (app.job_title || app.job?.title || '').toLowerCase();
+        const applicantName = (app.applicant_name || (app.user?.first_name + ' ' + app.user?.last_name) || '').toLowerCase();
+        const status = (app.status || '').toLowerCase();
+        
+        const matchesJob = !jobFilter || jobTitle.includes(jobFilter) || applicantName.includes(jobFilter);
+        const matchesStatus = !statusFilter || status.includes(statusFilter);
+        
+        return matchesJob && matchesStatus;
+    });
+    
+    displayApplications(filteredApplications);
+    updateApplicationCount(filteredApplications.length);
+}
+
+// Add filter event listener
+document.addEventListener('DOMContentLoaded', function() {
+    const applyFilterBtn = document.getElementById('applyFilterBtn');
+    if (applyFilterBtn) {
+        applyFilterBtn.addEventListener('click', applyEmployerFilters);
+    }
 });
 </script>
 

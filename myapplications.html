@@ -179,42 +179,8 @@
                                 <th>CV</th>
                                 <th>Withdraw Application</th>
 							</tr>
-						</thead>
-						<tbody>
-							<tr>
-                                <td>
-                                        <div class="fs-checkbox-wrapper">
-                                            <input aria-describedby="select-job"
-                                                   class="fs-checkbox"
-                                                   id="select-job"
-                                                   name="select-job"
-                                                   type="checkbox"
-                                                   value="select-job" />
-                                        </div>
-                                    </td>
-                                <td>Internship</td>
-								<td id="jobtype">Tech Creators</td>
-								<td id="status"><span class="status completed">In progress</span></td>
-                                <td id="cv"><a href="assets/img/cvexample.pdf" style="color: orange;" target="_blank">cvname.pdf</a></td>
-                                <td id="withdraw" style="color: red;">Withdraw Application</td>
-							</tr>
-                            <tr>
-                                <td>
-                                        <div class="fs-checkbox-wrapper">
-                                            <input aria-describedby="select-job"
-                                                   class="fs-checkbox"
-                                                   id="select-job"
-                                                   name="select-job"
-                                                   type="checkbox"
-                                                   value="select-job" />
-                                        </div>
-                                    </td>
-                                <td>Internship</td>
-								<td id="jobtype">Amazing Tech</td>
-								<td id="status"><span class="status completed">In progress</span></td>
-                                <td id="cv"><a href="assets/img/cvexample.pdf" style="color: orange;" target="_blank">cvname.pdf</a></td>
-                                <td id="withdraw" style="color: red;">Withdraw Application</td>
-							</tr>
+						</thead>						<tbody id="applicationsTableBody">
+							<!-- Applications will be loaded dynamically -->
 						</tbody>
 					</table>
 				</div>
@@ -247,19 +213,31 @@
 
     
        <script>
+// Updated filter functionality to work with dynamic data
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('applyFilterBtn').addEventListener('click', function() {
-        const jobFilter = document.getElementById('filterJob').value.trim().toLowerCase();
-        const statusFilter = document.getElementById('filterStatus').value.trim().toLowerCase();
-        document.querySelectorAll('table tbody tr').forEach(function(row) {
-            const jobText = row.cells[2].textContent.trim().toLowerCase();
-            const statusText = row.cells[3].textContent.trim().toLowerCase();
-            const matchesJob = !jobFilter || jobText.includes(jobFilter);
-            const matchesStatus = !statusFilter || statusText.includes(statusFilter);
-            row.style.display = (matchesJob && matchesStatus) ? '' : 'none';
-        });
+        applyFilters();
     });
 });
+
+function applyFilters() {
+    const jobFilter = document.getElementById('filterJob').value.trim().toLowerCase();
+    const statusFilter = document.getElementById('filterStatus').value.trim().toLowerCase();
+    
+    filteredApplications = allApplications.filter(app => {
+        const jobTitle = (app.job_title || app.job?.title || '').toLowerCase();
+        const companyName = (app.company_name || app.job?.company_name || '').toLowerCase();
+        const status = (app.status || '').toLowerCase();
+        
+        const matchesJob = !jobFilter || jobTitle.includes(jobFilter) || companyName.includes(jobFilter);
+        const matchesStatus = !statusFilter || status.includes(statusFilter);
+        
+        return matchesJob && matchesStatus;
+    });
+    
+    displayApplications(filteredApplications);
+    updateApplicationCount(filteredApplications.length);
+}
 
 </script>
     <script>document.addEventListener('DOMContentLoaded', function() {
@@ -332,6 +310,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     const username = localStorage.getItem("username") || "My Account";
     const headerBtnContainer = document.querySelector(".header-btn");
 
+    // Check if user is logged in and is a student
+    if (!token) {
+        window.location.href = "loginpage.html";
+        return;
+    }
+
+    if (userRole !== 'student') {
+        alert("Access denied. This page is for students only.");
+        window.location.href = "index.html";
+        return;
+    }
 
     if (headerBtnContainer) {
         if (token) {
@@ -352,7 +341,201 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
         headerBtnContainer.classList.remove("d-none");
     }
-});</script>
+
+    // Load user applications
+    await loadUserApplications();
+});
+
+// Global variables
+let allApplications = [];
+let filteredApplications = [];
+
+// Load user applications from API
+async function loadUserApplications() {
+    const token = localStorage.getItem("authToken");
+    
+    try {
+        showLoading();
+        
+        const response = await fetch('http://127.0.0.1:8000/api/user/applications/', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Token ${token}`
+            }
+        });
+
+        if (!response.ok) {
+            if (response.status === 401) {
+                localStorage.clear();
+                window.location.href = "loginpage.html";
+                return;
+            }
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const applications = await response.json();
+        allApplications = applications;
+        filteredApplications = [...applications];
+        
+        displayApplications(filteredApplications);
+        updateApplicationCount(filteredApplications.length);
+        
+    } catch (error) {
+        console.error('Error loading applications:', error);
+        showError('Failed to load applications. Please try again.');
+    } finally {
+        hideLoading();
+    }
+}
+
+// Display applications in the table
+function displayApplications(applications) {
+    const tableBody = document.getElementById('applicationsTableBody');
+    
+    if (applications.length === 0) {
+        tableBody.innerHTML = `
+            <tr>
+                <td colspan="6" style="text-align: center; padding: 20px;">
+                    <p>No applications found.</p>
+                    <a href="job_listing.html" class="btn btn-primary">Browse Jobs</a>
+                </td>
+            </tr>
+        `;
+        return;
+    }
+
+    tableBody.innerHTML = applications.map(app => createApplicationRow(app)).join('');
+    
+    // Add event listeners for withdraw buttons
+    addWithdrawEventListeners();
+}
+
+// Create application row HTML
+function createApplicationRow(application) {
+    const statusClass = getStatusClass(application.status);
+    const statusText = getStatusText(application.status);
+    
+    return `
+        <tr data-application-id="${application.id}">
+            <td>
+                <div class="fs-checkbox-wrapper">
+                    <input class="fs-checkbox" type="checkbox" value="${application.id}" />
+                </div>
+            </td>
+            <td>${application.job_title || application.job?.title || 'N/A'}</td>
+            <td>${application.company_name || application.job?.company_name || 'N/A'}</td>
+            <td><span class="status ${statusClass}">${statusText}</span></td>
+            <td>
+                ${application.cv_file ? 
+                    `<a href="${application.cv_file}" style="color: orange;" target="_blank">View CV</a>` : 
+                    '<span style="color: gray;">No CV</span>'
+                }
+            </td>
+            <td>
+                ${application.status === 'pending' ? 
+                    `<button class="withdraw-btn" data-application-id="${application.id}" style="color: red; background: none; border: none; cursor: pointer;">Withdraw Application</button>` :
+                    '<span style="color: gray;">Cannot withdraw</span>'
+                }
+            </td>
+        </tr>
+    `;
+}
+
+// Get status CSS class
+function getStatusClass(status) {
+    switch(status?.toLowerCase()) {
+        case 'accepted': return 'completed';
+        case 'rejected': return 'process';
+        case 'pending': return 'pending';
+        default: return 'pending';
+    }
+}
+
+// Get status display text
+function getStatusText(status) {
+    switch(status?.toLowerCase()) {
+        case 'accepted': return 'Accepted';
+        case 'rejected': return 'Rejected';
+        case 'pending': return 'Pending';
+        default: return 'Pending';
+    }
+}
+
+// Add event listeners for withdraw buttons
+function addWithdrawEventListeners() {
+    document.querySelectorAll('.withdraw-btn').forEach(btn => {
+        btn.addEventListener('click', async (e) => {
+            const applicationId = e.target.getAttribute('data-application-id');
+            if (confirm('Are you sure you want to withdraw this application?')) {
+                await withdrawApplication(applicationId);
+            }
+        });
+    });
+}
+
+// Withdraw application
+async function withdrawApplication(applicationId) {
+    const token = localStorage.getItem("authToken");
+    
+    try {
+        const response = await fetch(`http://127.0.0.1:8000/api/applications/${applicationId}/withdraw/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Token ${token}`
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        // Reload applications after withdrawal
+        await loadUserApplications();
+        alert('Application withdrawn successfully.');
+        
+    } catch (error) {
+        console.error('Error withdrawing application:', error);
+        alert('Failed to withdraw application. Please try again.');
+    }
+}
+
+// Update application count
+function updateApplicationCount(count) {
+    document.getElementById('applicationCount').textContent = count;
+}
+
+// Show loading state
+function showLoading() {
+    const tableBody = document.getElementById('applicationsTableBody');
+    tableBody.innerHTML = `
+        <tr>
+            <td colspan="6" style="text-align: center; padding: 20px;">
+                <div class="loading-spinner">Loading applications...</div>
+            </td>
+        </tr>
+    `;
+}
+
+// Hide loading state
+function hideLoading() {
+    // Loading is hidden when displayApplications is called
+}
+
+// Show error message
+function showError(message) {
+    const tableBody = document.getElementById('applicationsTableBody');
+    tableBody.innerHTML = `
+        <tr>
+            <td colspan="6" style="text-align: center; padding: 20px;">
+                <p style="color: red;">${message}</p>
+                <button onclick="loadUserApplications()" class="btn btn-primary">Retry</button>
+            </td>
+        </tr>
+    `;
+}
+</script>
 
 </body>
 </html>

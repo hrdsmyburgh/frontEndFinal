@@ -184,21 +184,20 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Collect form data
+        // Simplified job data - remove problematic fields
         const jobData = {
             title: document.getElementById("jobtitle").value.trim(),
             job_type: document.getElementById("jobtype").value.trim(),
             description: document.getElementById("jobdetails").value.trim(),
             location: document.getElementById("location").value.trim(),
-            vacancies: parseInt(document.getElementById("vacancies").value, 10),
             salary_range: document.getElementById("salary").value.trim(),
             skills_required: document.getElementById("skills").value.trim(),
             education_experience: document.getElementById("experience").value.trim(),
-            is_active: document.getElementById("bgv-consent").checked
+            is_active: true
         };
 
         try {
-            const apiUrl = "http://127.0.0.1:8000/api/job/create/";
+            const apiUrl = "http://127.0.0.1:8000/api/job/";  // Correct endpoint
             const response = await fetch(apiUrl, {
                 method: "POST",
                 headers: {
@@ -211,27 +210,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok) {
                 alert("✅ Job post submitted successfully!");
                 jobForm.reset();
-                // Optionally redirect:
-                // window.location.href = "employeradminpage.html";
             } else {
                 const errorData = await response.json();
                 console.error("API Error:", errorData);
-                let errorMessage = `❌ Failed to post job (Status: ${response.status}).`;
-
-                if (errorData.detail) {
-                    errorMessage += `\nDetail: ${errorData.detail}`;
-                } else {
-                    errorMessage += "\nValidation Errors:\n";
-                    for (const key in errorData) {
-                        errorMessage += `- ${key}: ${errorData[key]}\n`;
-                    }
-                }
-
-                alert(errorMessage);
+                alert("❌ Failed to post job. Check console for details.");
             }
         } catch (error) {
             console.error("Network Error:", error);
-            alert("🚫 Network error: Could not connect to server (http://127.0.0.1:8000).");
+            alert("🚫 Network error: " + error.message);
         }
     });
 });

@@ -278,19 +278,18 @@
                     <section class="featured-job-area">
                         <div class="container">
                             <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="count-job mb-35">
-                                        <span>39, 782 Jobs found</span>
-                                        <div class="select-job-items">
-                                            <span>Sort by</span>
-                                            <select name="select">
-                                                <option value="">None</option>
-                                                <option value="">Salary (highest to lowest)</option>
-                                                <option value="">Salary (lowest to highest)</option>
-                                                <option value="">Recently Posted</option>
-                                            </select>
-                                        </div>
-                                    </div>
+                                <div class="col-lg-12">                    <div class="count-job mb-35">
+                        <span id="jobCount">Loading jobs...</span>
+                        <div class="select-job-items">
+                            <span>Sort by</span>
+                            <select name="select" id="sortSelect">
+                                <option value="">None</option>
+                                <option value="salary_desc">Salary (highest to lowest)</option>
+                                <option value="salary_asc">Salary (lowest to highest)</option>
+                                <option value="recent">Recently Posted</option>
+                            </select>
+                        </div>
+                    </div>
                                 </div>
                             </div>                               
                                 </div>
@@ -424,10 +423,7 @@
             }
         });
     });
-</script>
-
-
-        <script>document.addEventListener('DOMContentLoaded', function() {
+</script>        <script>document.addEventListener('DOMContentLoaded', function() {
     const userType = localStorage.getItem('userType');
     if (userType === 'employer') {
         const myAppLink = document.getElementById('nav-myapplications');
@@ -437,7 +433,218 @@
         const empAdminLink = document.getElementById('nav-employeradmin');
         if (empAdminLink) empAdminLink.style.display = 'none';
     }
+    
+    // Load jobs when page loads
+    loadJobs();
 });</script>
+
+<script>
+// Job loading and display functionality
+let allJobs = [];
+let filteredJobs = [];
+
+async function loadJobs() {
+    try {
+        const response = await fetch('http://127.0.0.1:8000/api/jobs/', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+
+        if (response.ok) {
+            allJobs = await response.json();
+            filteredJobs = [...allJobs];
+            displayJobs(filteredJobs);
+            updateJobCount(filteredJobs.length);
+        } else {
+            console.error('Failed to load jobs:', response.status);
+            showError('Failed to load jobs. Please try again later.');
+        }
+    } catch (error) {
+        console.error('Error loading jobs:', error);
+        showError('Error loading jobs. Please check your connection.');
+    }
+}
+
+function displayJobs(jobs) {
+    const container = document.getElementById('jobListingsContainer');
+    const loadingSpinner = document.getElementById('loadingSpinner');
+    
+    if (loadingSpinner) {
+        loadingSpinner.style.display = 'none';
+    }
+    
+    if (!jobs || jobs.length === 0) {
+        container.innerHTML = `
+            <div class="col-lg-12 text-center">
+                <p>No jobs found matching your criteria.</p>
+            </div>
+        `;
+        return;
+    }
+    
+    container.innerHTML = jobs.map(job => createJobCard(job)).join('');
+}
+
+function createJobCard(job) {
+    const timeAgo = getTimeAgo(job.created_at || job.posted_date);
+    const salaryRange = job.salary_min && job.salary_max ? 
+        `$${job.salary_min} - $${job.salary_max}` : 
+        (job.salary || 'Salary not specified');
+    
+    return `
+        <div class="col-xl-12">
+            <div class="single-job-items mb-30" data-job-id="${job.id}">
+                <div class="job-items">
+                    <div class="company-img">
+                        <a href="job_details.html?id=${job.id}">
+                            <img src="assets/img/icon/job-list1.png" alt="Company Logo">
+                        </a>
+                    </div>
+                    <div class="job-tittle">
+                        <a href="job_details.html?id=${job.id}">
+                            <h4>${job.title || job.job_title}</h4>
+                        </a>
+                        <ul>
+                            <li>${job.company_name || 'Company Name'}</li>
+                            <li><i class="fas fa-map-marker-alt"></i>${job.location}</li>
+                            <li>${salaryRange}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="items-link f-right">
+                    <a href="job_details.html?id=${job.id}">${job.job_type || 'Full Time'}</a>
+                    <span>${timeAgo}</span>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function getTimeAgo(dateString) {
+    if (!dateString) return 'Recently posted';
+    
+    const now = new Date();
+    const postDate = new Date(dateString);
+    const diffTime = Math.abs(now - postDate);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+    if (diffDays === 1) return '1 day ago';
+    if (diffDays < 7) return `${diffDays} days ago`;
+    if (diffDays < 30) return `${Math.ceil(diffDays / 7)} weeks ago`;
+    return `${Math.ceil(diffDays / 30)} months ago`;
+}
+
+function updateJobCount(count) {
+    const jobCountElement = document.getElementById('jobCount');
+    if (jobCountElement) {
+        jobCountElement.textContent = `${count} Jobs found`;
+    }
+}
+
+function showError(message) {
+    const container = document.getElementById('jobListingsContainer');
+    const loadingSpinner = document.getElementById('loadingSpinner');
+    
+    if (loadingSpinner) {
+        loadingSpinner.style.display = 'none';
+    }
+    
+    container.innerHTML = `
+        <div class="col-lg-12 text-center">
+            <p class="text-danger">${message}</p>
+            <button class="btn btn-primary" onclick="loadJobs()">Retry</button>
+        </div>
+    `;
+}
+
+// Sort functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const sortSelect = document.getElementById('sortSelect');
+    if (sortSelect) {
+        sortSelect.addEventListener('change', function() {
+            const sortValue = this.value;
+            sortJobs(sortValue);
+        });
+    }
+});
+
+function sortJobs(sortType) {
+    let sortedJobs = [...filteredJobs];
+    
+    switch(sortType) {
+        case 'salary_desc':
+            sortedJobs.sort((a, b) => {
+                const salaryA = a.salary_max || a.salary || 0;
+                const salaryB = b.salary_max || b.salary || 0;
+                return salaryB - salaryA;
+            });
+            break;
+        case 'salary_asc':
+            sortedJobs.sort((a, b) => {
+                const salaryA = a.salary_max || a.salary || 0;
+                const salaryB = b.salary_max || b.salary || 0;
+                return salaryA - salaryB;
+            });
+            break;
+        case 'recent':
+            sortedJobs.sort((a, b) => {
+                const dateA = new Date(a.created_at || a.posted_date || 0);
+                const dateB = new Date(b.created_at || b.posted_date || 0);
+                return dateB - dateA;
+            });
+            break;
+        default:
+            // No sorting, keep original order
+            break;
+    }
+    
+    displayJobs(sortedJobs);
+}
+
+// Filter functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const applyFilterBtn = document.getElementById('applyJobFilterBtn');
+    if (applyFilterBtn) {
+        applyFilterBtn.addEventListener('click', applyFilters);
+    }
+});
+
+function applyFilters() {
+    // Get filter values
+    const jobCategory = document.querySelector('select[name="select"]').value;
+    const jobTypes = Array.from(document.querySelectorAll('.select-Categories input[type="checkbox"]:checked'))
+        .map(cb => cb.parentElement.textContent.trim());
+    const location = document.querySelector('.select-job-items2 select').value;
+    const experience = Array.from(document.querySelectorAll('.select-Categories input[type="checkbox"]:checked'))
+        .map(cb => cb.parentElement.textContent.trim());
+    
+    // Apply filters to jobs
+    filteredJobs = allJobs.filter(job => {
+        // Category filter
+        if (jobCategory && jobCategory !== '' && job.category !== jobCategory) {
+            return false;
+        }
+        
+        // Job type filter
+        if (jobTypes.length > 0 && !jobTypes.includes(job.job_type)) {
+            return false;
+        }
+        
+        // Location filter
+        if (location && location !== '' && location !== 'Anywhere' && 
+            !job.location.toLowerCase().includes(location.toLowerCase())) {
+            return false;
+        }
+        
+        return true;
+    });
+    
+    displayJobs(filteredJobs);
+    updateJobCount(filteredJobs.length);
+}
+</script>
 
 
 <script>

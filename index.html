@@ -58,9 +58,61 @@
             .single-services:hover {
                 transform: translateY(-5px);
                 box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            }
-            .single-services {
+            }            .single-services {
                 transition: all 0.3s ease;
+            }
+            
+            /* Location autocomplete styling */
+            #locationInput {
+                height: 70px;
+                width: 100%;
+                color: #777777;
+                font-size: 18px;
+                font-weight: 400;
+                padding: 9px 33px 9px 32px;
+                border: none;
+                border-radius: 0px;
+                background: #fff;
+            }
+            
+            #locationInput::placeholder {
+                color: #616875;
+            }
+            
+            .location-suggestions {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #fff;
+                border: 1px solid #e0e4f8;
+                border-top: none;
+                max-height: 200px;
+                overflow-y: auto;
+                z-index: 1000;
+                display: none;
+            }
+            
+            .location-suggestion-item {
+                padding: 10px 15px;
+                cursor: pointer;
+                border-bottom: 1px solid #f0f0f0;
+                font-size: 14px;
+                color: #777777;
+            }
+            
+            .location-suggestion-item:hover,
+            .location-suggestion-item.active {
+                background-color: #f57f17;
+                color: #fff;
+            }
+            
+            .location-suggestion-item:last-child {
+                border-bottom: none;
+            }
+            
+            .select-itms {
+                position: relative;
             }
         </style>
         </head>
@@ -132,15 +184,10 @@
                                 <form action="#" class="search-box">
                                     <div class="input-form">
                                         <input type="text" placeholder="Job Tittle or keyword">
-                                    </div>
-                                    <div class="select-form">
+                                    </div>                                    <div class="select-form">
                                         <div class="select-itms">
-                                            <select name="select" id="select1">
-                                                <option value="">Location 1</option>
-                                                <option value="">Location 2</option>
-                                                <option value="">Location 3</option>
-                                                <option value="">Location 4</option>
-                                            </select>
+                                            <input type="text" id="locationInput" name="location" placeholder="Enter location..." autocomplete="off">
+                                            <div id="locationSuggestions" class="location-suggestions"></div>
                                         </div>
                                     </div>
                                     <div class="search-form">
@@ -626,9 +673,155 @@
             } else {
                 myAppLi.style.display = 'none';
                 empAdminLi.style.display = 'none';
-            }
-        }
+            }        }
+        
+        // Location autocomplete functionality
+        initLocationAutocomplete();
     });
+    
+    // Location autocomplete implementation
+    function initLocationAutocomplete() {
+        const locationInput = document.getElementById('locationInput');
+        const suggestionsContainer = document.getElementById('locationSuggestions');
+        let currentFocus = -1;
+        
+        // Sample locations for demonstration - in production, this would come from an API
+        const sampleLocations = [
+            'New York, NY, USA',
+            'Los Angeles, CA, USA',
+            'Chicago, IL, USA',
+            'Houston, TX, USA',
+            'Phoenix, AZ, USA',
+            'Philadelphia, PA, USA',
+            'San Antonio, TX, USA',
+            'San Diego, CA, USA',
+            'Dallas, TX, USA',
+            'San Jose, CA, USA',
+            'Austin, TX, USA',
+            'Jacksonville, FL, USA',
+            'Fort Worth, TX, USA',
+            'Columbus, OH, USA',
+            'Charlotte, NC, USA',
+            'San Francisco, CA, USA',
+            'Indianapolis, IN, USA',
+            'Seattle, WA, USA',
+            'Denver, CO, USA',
+            'Washington, DC, USA',
+            'Boston, MA, USA',
+            'El Paso, TX, USA',
+            'Nashville, TN, USA',
+            'Detroit, MI, USA',
+            'Oklahoma City, OK, USA',
+            'Portland, OR, USA',
+            'Las Vegas, NV, USA',
+            'Memphis, TN, USA',
+            'Louisville, KY, USA',
+            'Baltimore, MD, USA',
+            'Milwaukee, WI, USA',
+            'Albuquerque, NM, USA',
+            'Tucson, AZ, USA',
+            'Fresno, CA, USA',
+            'Sacramento, CA, USA',
+            'Mesa, AZ, USA',
+            'Kansas City, MO, USA',
+            'Atlanta, GA, USA',
+            'Long Beach, CA, USA',
+            'Colorado Springs, CO, USA',
+            'Raleigh, NC, USA',
+            'Miami, FL, USA',
+            'Virginia Beach, VA, USA',
+            'Omaha, NE, USA',
+            'Oakland, CA, USA',
+            'Minneapolis, MN, USA',
+            'Tulsa, OK, USA',
+            'Arlington, TX, USA',
+            'Tampa, FL, USA',
+            'New Orleans, LA, USA'
+        ];
+        
+        if (!locationInput || !suggestionsContainer) return;
+        
+        locationInput.addEventListener('input', function() {
+            const query = this.value.trim();
+            currentFocus = -1;
+            
+            if (query.length < 2) {
+                hideSuggestions();
+                return;
+            }
+            
+            // Filter locations based on input
+            const filteredLocations = sampleLocations.filter(location => 
+                location.toLowerCase().includes(query.toLowerCase())
+            ).slice(0, 8); // Limit to 8 suggestions
+            
+            displaySuggestions(filteredLocations);
+        });
+        
+        locationInput.addEventListener('keydown', function(e) {
+            const suggestions = suggestionsContainer.querySelectorAll('.location-suggestion-item');
+            
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                currentFocus++;
+                if (currentFocus >= suggestions.length) currentFocus = 0;
+                setActive(suggestions);
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                currentFocus--;
+                if (currentFocus < 0) currentFocus = suggestions.length - 1;
+                setActive(suggestions);
+            } else if (e.key === 'Enter') {
+                e.preventDefault();
+                if (currentFocus > -1 && suggestions[currentFocus]) {
+                    selectLocation(suggestions[currentFocus].textContent);
+                }
+            } else if (e.key === 'Escape') {
+                hideSuggestions();
+            }
+        });
+        
+        // Hide suggestions when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!locationInput.contains(e.target) && !suggestionsContainer.contains(e.target)) {
+                hideSuggestions();
+            }
+        });
+        
+        function displaySuggestions(locations) {
+            if (locations.length === 0) {
+                hideSuggestions();
+                return;
+            }
+            
+            suggestionsContainer.innerHTML = '';
+            locations.forEach(location => {
+                const item = document.createElement('div');
+                item.className = 'location-suggestion-item';
+                item.textContent = location;
+                item.addEventListener('click', () => selectLocation(location));
+                suggestionsContainer.appendChild(item);
+            });
+            
+            suggestionsContainer.style.display = 'block';
+        }
+        
+        function hideSuggestions() {
+            suggestionsContainer.style.display = 'none';
+            currentFocus = -1;
+        }
+        
+        function selectLocation(location) {
+            locationInput.value = location;
+            hideSuggestions();
+        }
+        
+        function setActive(suggestions) {
+            suggestions.forEach((item, index) => {
+                item.classList.toggle('active', index === currentFocus);
+            });
+        }
+    }
 </script>
         
     </body>
