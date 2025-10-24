@@ -317,29 +317,32 @@
         }
 
         function fetchJobDetails(jobId) {
-            if (!jobId) {
-                console.error("No Job ID found in URL. Displaying static/default content.");
-                return;
-            }
+    if (!jobId) {
+        console.error("No Job ID found in URL. Displaying static/default content.");
+        return;
+    }
 
-            const jobDetailsApiUrl = `http://localhost:8000/api/job/details/${jobId}/`;
+    const jobDetailsApiUrl = `http://localhost:8000/api/job/details/${jobId}/`;
 
-            fetch(jobDetailsApiUrl)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`Failed to fetch job details (HTTP ${response.status})`);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    populateJobDetails(data);
-                })
-                .catch(error => {
-                    console.error('Error fetching job details:', error);
-                    document.getElementById('job-detail-main-title').textContent = "Job Not Found";
-                    document.getElementById('job-detail-header-title').textContent = "Error Loading Job Details";
-                });
+    fetch(jobDetailsApiUrl, {
+        method: 'GET',
+        credentials: 'include'   
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Failed to fetch job details (HTTP ${response.status})`);
         }
+        return response.json();
+    })
+    .then(data => {
+        populateJobDetails(data);
+    })
+    .catch(error => {
+        console.error('Error fetching job details:', error);
+        document.getElementById('job-detail-main-title').textContent = "Job Not Found";
+        document.getElementById('job-detail-header-title').textContent = "Error Loading Job Details";
+    });
+}
 
         function populateJobDetails(job) {
             document.getElementById('job-detail-main-title').textContent = job.title || 'Job Details';
