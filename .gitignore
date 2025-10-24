@@ -1,0 +1,7 @@
+# IDE/Tooling
+.vscode/
+# Dependency/Build Directories
+node_modules/
+dist/
+build/
+*.log

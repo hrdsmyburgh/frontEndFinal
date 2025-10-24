@@ -6,6 +6,8 @@
            <title>Internship & Job Portal</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+		 <!-- Website manifest and favicon -->
         <link rel="manifest" href="site.webmanifest">
         <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -66,7 +68,8 @@
         </head>
 
    <body>
-       
+
+	<!-- Page preloader animation -->
     <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
             <div class="preloader-inner position-relative">
@@ -100,7 +103,9 @@
                                             <li><a href="employeradminpage.html">Employer Admin</a></li> 
                                         </ul>
                                     </nav>
-                                </div>          
+                                </div> 
+								
+								<!-- Register and Login buttons -->
                                 <div class="header-btn d-none f-right d-lg-block">
                                     <a href="registrationpage.html" class="btn head-btn1">Register</a>
                                     <a href="loginpage.html" class="btn head-btn2">Login</a>
@@ -247,6 +252,7 @@
 
     
        <script>
+
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('applyFilterBtn').addEventListener('click', function() {
         const jobFilter = document.getElementById('filterJob').value.trim().toLowerCase();
@@ -276,8 +282,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+	 // "Apply" button for withdrawing applications
     document.querySelector('.apply-action-btn').addEventListener('click', function() {
         const action = document.getElementById('actionDropdown').value;
+
+		// If user chooses "Withdraw"
         if (action === 'accept') {
             const rows = document.querySelectorAll('table tbody tr');
             for (let i = rows.length - 1; i >= 0; i--) {
@@ -316,14 +325,13 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('applyFilterBtn').addEventListener('click', function() {
         updateApplicationCount();
     });
-
     document.querySelector('.apply-action-btn').addEventListener('click', function() {
         updateApplicationCount();
+
+    
     });
 });
 </script>
-
-
 
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
@@ -332,7 +340,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const username = localStorage.getItem("username") || "My Account";
     const headerBtnContainer = document.querySelector(".header-btn");
 
-
+    // Update header buttons based on authentication status
     if (headerBtnContainer) {
         if (token) {
             headerBtnContainer.innerHTML = `
@@ -353,6 +361,5 @@ document.addEventListener('DOMContentLoaded', async () => {
         headerBtnContainer.classList.remove("d-none");
     }
 });</script>
-
 </body>
 </html>
