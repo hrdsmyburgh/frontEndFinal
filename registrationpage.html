@@ -382,28 +382,38 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log("Submitting data:", apiData); 
 
             try {
-                const response = await fetch(
-                    "http://127.0.0.1:8000/api/users/register/",
-                    {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(apiData)
-                    }
-                );
+    const response = await fetch(
+        "http://127.0.0.1:8000/api/users/register/",
+        {
+            method: "POST",
+            headers: { 
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(apiData)
+        }
+    );
 
-                if (response.ok) {
-                    const data = await response.json();
-                    alert("Registration successful!");
-                    localStorage.setItem("userType", apiData.role);
-                    localStorage.setItem("username", firstName + " " + lastName);
-                    window.location.href = "loginpage.html";
-                } else {
-                    const errorData = await response.json();
-                    alert("Registration Failed. Server Error: " + JSON.stringify(errorData));
-                }
-            } catch (error) {
-                alert("Request failed. Please check your backend's CORS configuration. Error: " + error);
-            }
+    console.log("Response status:", response.status);
+    
+    const responseText = await response.text();
+    console.log("Raw response:", responseText);
+    
+    try {
+        const data = JSON.parse(responseText);
+        if (response.ok) {
+            alert("Registration successful!");
+            window.location.href = "loginpage.html";
+        } else {
+            alert("Registration Failed: " + JSON.stringify(data));
+        }
+    } catch (e) {
+        console.error("JSON parse error:", e);
+        alert("Server returned non-JSON response: " + responseText);
+    }
+} catch (error) {
+    console.error("Fetch error:", error);
+    alert("Network error: " + error.message);
+}
         });
     }
 });
