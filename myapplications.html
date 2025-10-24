@@ -325,9 +325,10 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('applyFilterBtn').addEventListener('click', function() {
         updateApplicationCount();
     });
-
     document.querySelector('.apply-action-btn').addEventListener('click', function() {
         updateApplicationCount();
+
+    
     });
 });
 </script>
@@ -339,7 +340,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const username = localStorage.getItem("username") || "My Account";
     const headerBtnContainer = document.querySelector(".header-btn");
 
-
+    // Update header buttons based on authentication status
     if (headerBtnContainer) {
         if (token) {
             headerBtnContainer.innerHTML = `
@@ -360,6 +361,5 @@ document.addEventListener('DOMContentLoaded', async () => {
         headerBtnContainer.classList.remove("d-none");
     }
 });</script>
-
 </body>
 </html>
