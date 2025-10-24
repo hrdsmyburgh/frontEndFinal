@@ -184,20 +184,20 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Simplified job data - remove problematic fields
+        // Use EXACT field names from your Job model
         const jobData = {
             title: document.getElementById("jobtitle").value.trim(),
-            job_type: document.getElementById("jobtype").value.trim(),
+            type: document.getElementById("jobtype").value.trim(),  // Changed from job_type to type
             description: document.getElementById("jobdetails").value.trim(),
             location: document.getElementById("location").value.trim(),
             salary_range: document.getElementById("salary").value.trim(),
-            skills_required: document.getElementById("skills").value.trim(),
-            education_experience: document.getElementById("experience").value.trim(),
+            experience: document.getElementById("experience").value.trim(),  // Changed from education_experience to experience
             is_active: true
+            // Removed: vacancies, skills_required (they don't exist in model)
         };
 
         try {
-            const apiUrl = "http://127.0.0.1:8000/api/job/";  // Correct endpoint
+            const apiUrl = "http://127.0.0.1:8000/api/job/";
             const response = await fetch(apiUrl, {
                 method: "POST",
                 headers: {
@@ -210,6 +210,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok) {
                 alert("✅ Job post submitted successfully!");
                 jobForm.reset();
+                // Optional: redirect to employer dashboard
+                // window.location.href = "employeradminpage.html";
             } else {
                 const errorData = await response.json();
                 console.error("API Error:", errorData);
