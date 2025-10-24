@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alert("✅ Job post submitted successfully!");
                 jobForm.reset();
                 // Optionally redirect:
-                // window.location.href = "employeradminpage.html";
+                window.location.href = "employeradminpage.html";
             } else {
                 const errorData = await response.json();
                 console.error("API Error:", errorData);
